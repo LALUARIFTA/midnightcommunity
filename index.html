@@ -11,7 +11,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap"
       rel="stylesheet"
     />
     <link
@@ -73,6 +73,47 @@
         padding: 0 24px;
       }
 
+      /* ---------- ANIMATIONS (fade + slide) ---------- */
+      @keyframes floatGlow {
+        0% {
+          filter: drop-shadow(0 0 8px #8b5cf6);
+        }
+        50% {
+          filter: drop-shadow(0 0 18px #a78bfa);
+        }
+        100% {
+          filter: drop-shadow(0 0 8px #8b5cf6);
+        }
+      }
+      .logo-icon {
+        animation: floatGlow 3s infinite ease-in-out;
+      }
+
+      .animate-on-scroll {
+        opacity: 0;
+        transform: translateY(28px);
+        transition:
+          opacity 0.7s cubic-bezier(0.2, 0.9, 0.1, 1),
+          transform 0.7s cubic-bezier(0.2, 0.9, 0.1, 1);
+      }
+      .animate-on-scroll.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* staggered children (optional) */
+      .stagger-item {
+        opacity: 0;
+        transform: translateY(24px);
+        transition:
+          opacity 0.5s ease,
+          transform 0.5s ease;
+      }
+      .stagger-item.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
       /* navbar */
       .navbar {
         position: fixed;
@@ -119,7 +160,7 @@
       }
       .nav-links {
         display: flex;
-        gap: 36px;
+        gap: 28px;
         font-weight: 600;
       }
       .nav-links a {
@@ -347,8 +388,164 @@
         font-size: 0.95rem;
         margin-bottom: 24px;
       }
-      .card-btn {
-        display: none;
+
+      /* ---------- EVENTS SECTION ---------- */
+      .events-section {
+        padding: 100px 0;
+        background: #03050b;
+        position: relative;
+      }
+      .events-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 28px;
+      }
+      .event-card {
+        background: rgba(15, 22, 41, 0.8);
+        backdrop-filter: blur(8px);
+        border: 1px solid #2e1065;
+        border-radius: 28px;
+        padding: 28px 22px;
+        transition: all 0.25s;
+      }
+      .event-card:hover {
+        border-color: #a78bfa;
+        background: #0f1629;
+        box-shadow: 0 20px 30px -10px #6d28d950;
+        transform: scale(1.01);
+      }
+      .event-date {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        color: #a78bfa;
+        font-weight: 600;
+        margin-bottom: 20px;
+        font-size: 0.9rem;
+      }
+      .event-title {
+        font-size: 1.7rem;
+        font-weight: 700;
+        margin-bottom: 10px;
+        color: #f3e8ff;
+      }
+      .event-game {
+        display: inline-block;
+        background: #4c1d95;
+        padding: 2px 14px;
+        border-radius: 30px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        margin-bottom: 18px;
+        color: #e9d5ff;
+      }
+      .event-desc {
+        color: #cbd5e1;
+        margin-bottom: 20px;
+      }
+      .event-link {
+        color: #c4b5fd;
+        text-decoration: none;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      /* ---------- MEMBERS SECTION ---------- */
+      .members-section {
+        padding: 100px 0;
+        background: #050812;
+      }
+      .members-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 30px;
+      }
+      .member-card {
+        background: #0f1629;
+        border-radius: 30px;
+        padding: 28px 16px 20px;
+        text-align: center;
+        border: 1px solid #1e293b;
+        transition: all 0.3s;
+        backdrop-filter: blur(4px);
+      }
+      .member-card:hover {
+        border-color: #8b5cf6;
+        transform: translateY(-8px);
+        box-shadow: 0 25px 30px -12px #000;
+      }
+      .member-avatar {
+        width: 100px;
+        height: 100px;
+        margin: 0 auto 20px;
+        background: linear-gradient(145deg, #4c1d95, #1e1b4b);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 3px solid #a78bfa;
+        box-shadow: 0 0 20px #6d28d9;
+        font-size: 2.8rem;
+        font-weight: 700;
+        color: #ddd6fe;
+        text-transform: uppercase;
+      }
+      .member-name {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 4px;
+      }
+      .member-role {
+        color: #a78bfa;
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+      .member-game {
+        font-size: 0.9rem;
+        color: #9ca3af;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+      }
+
+      /* ---------- BENEFITS SECTION ---------- */
+      .benefits-section {
+        padding: 100px 0;
+        background: #03050b;
+      }
+      .benefits-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+      }
+      .benefit-card {
+        background: rgba(17, 24, 39, 0.7);
+        backdrop-filter: blur(10px);
+        border: 1px solid #4c1d9550;
+        border-radius: 36px;
+        padding: 36px 24px;
+        text-align: left;
+        transition: 0.2s;
+      }
+      .benefit-card:hover {
+        border-color: #a78bfa;
+        background: #0f1629d0;
+      }
+      .benefit-icon {
+        font-size: 2.5rem;
+        color: #a78bfa;
+        margin-bottom: 24px;
+      }
+      .benefit-card h3 {
+        font-size: 1.7rem;
+        font-weight: 700;
+        margin-bottom: 12px;
+      }
+      .benefit-card p {
+        color: #cbd5e1;
       }
 
       /* cta join */
@@ -384,7 +581,12 @@
 
       /* responsive */
       @media (max-width: 1024px) {
-        .div-grid {
+        .div-grid,
+        .members-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        .events-grid,
+        .benefits-grid {
           grid-template-columns: repeat(2, 1fr);
         }
       }
@@ -401,6 +603,7 @@
           padding: 30px;
           border-radius: 30px;
           border: 1px solid #4c1d95;
+          gap: 20px;
         }
         .nav-links.show {
           display: flex;
@@ -415,7 +618,10 @@
           flex-direction: column;
           align-items: center;
         }
-        .div-grid {
+        .div-grid,
+        .members-grid,
+        .events-grid,
+        .benefits-grid {
           grid-template-columns: 1fr;
         }
         .footer-content {
@@ -436,6 +642,9 @@
         <div class="nav-links" id="navLinks">
           <a href="#home" class="nav-link active">Home</a>
           <a href="#divisions" class="nav-link">Divisions</a>
+          <a href="#events" class="nav-link">Events</a>
+          <a href="#members" class="nav-link">Members</a>
+          <a href="#benefits" class="nav-link">Benefits</a>
           <a href="#join" class="nav-link">Join</a>
         </div>
         <a href="https://discord.gg/sH4WESmjMK" target="_blank" class="nav-cta"
@@ -453,14 +662,16 @@
       <div class="container hero-content">
         <span class="hero-tag"
           ><i class="fas fa-crown" style="margin-right: 8px"></i>
-          #MIDNIGHT BY UPZONE.ID</span
+          #DARKESTHOUR</span
         >
-        <h1 class="hero-title">MIDNIGHT<br />COMMUNITY</h1>
-        <p class="hero-sub">
+        <h1 class="hero-title animate-on-scroll visible">
+          MIDNIGHT<br />COMMUNITY
+        </h1>
+        <p class="hero-sub animate-on-scroll">
           Rise from the shadows. Dominate the meta.<br />Bloodstrike · Valorant
           · PUBG · Roblox
         </p>
-        <div class="hero-buttons">
+        <div class="hero-buttons animate-on-scroll">
           <a href="#divisions" class="btn btn-primary"
             ><i class="fas fa-chevron-circle-down"></i> Explore Divisions</a
           >
@@ -477,7 +688,7 @@
     <!-- Divisions -->
     <section id="divisions" class="divisions">
       <div class="container">
-        <div class="section-header">
+        <div class="section-header animate-on-scroll">
           <h2 class="section-title">Our Elite Divisions</h2>
           <p class="section-sub">
             Competitive rosters ready for the midnight hour
@@ -485,32 +696,185 @@
         </div>
         <div class="div-grid">
           <!-- Bloodstrike -->
-          <div class="game-card">
+          <div class="game-card animate-on-scroll">
             <div class="game-icon"><i class="fas fa-skull"></i></div>
             <h3>Bloodstrike</h3>
             <span class="game-tag">FPS · Tactical</span>
-            <p class="game-desc">COLAB WITH CLAN BANGERZ</p>
+            <p class="game-desc">Strike first. No mercy.</p>
           </div>
           <!-- Valorant -->
-          <div class="game-card">
+          <div class="game-card animate-on-scroll">
             <div class="game-icon"><i class="fas fa-crosshairs"></i></div>
             <h3>Valorant</h3>
             <span class="game-tag">Tactical Shooter</span>
-            <p class="game-desc">-</p>
+            <p class="game-desc">Precision agents. Radiant mindset.</p>
           </div>
           <!-- PUBG -->
-          <div class="game-card">
+          <div class="game-card animate-on-scroll">
             <div class="game-icon"><i class="fas fa-parachute-box"></i></div>
             <h3>PUBG</h3>
             <span class="game-tag">Battle Royale</span>
-            <p class="game-desc">-</p>
+            <p class="game-desc">Survive the night. Own the battleground.</p>
           </div>
           <!-- Roblox -->
-          <div class="game-card">
+          <div class="game-card animate-on-scroll">
             <div class="game-icon"><i class="fas fa-cube"></i></div>
             <h3>Roblox</h3>
             <span class="game-tag">Metaverse</span>
-            <p class="game-desc">-</p>
+            <p class="game-desc">Creative dominance. Midnight experiences.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EVENTS / AGENDA -->
+    <section id="events" class="events-section">
+      <div class="container">
+        <div class="section-header animate-on-scroll">
+          <h2 class="section-title">⚡ Upcoming Agenda</h2>
+          <p class="section-sub">Mark your calendar. Midnight never sleeps.</p>
+        </div>
+        <div class="events-grid">
+          <div class="event-card animate-on-scroll">
+            <div class="event-date">
+              <i class="far fa-calendar-alt"></i> 25 APR 2026 · 20:00 WIB
+            </div>
+            <div class="event-title">Bloodstrike Rumble</div>
+            <span class="event-game"
+              ><i class="fas fa-skull"></i> Bloodstrike</span
+            >
+            <p class="event-desc">
+              Squad tournament with prize pool & exclusive in-game rewards.
+            </p>
+            <a href="#" class="event-link"
+              >Register interest <i class="fas fa-arrow-right"></i
+            ></a>
+          </div>
+          <div class="event-card animate-on-scroll">
+            <div class="event-date">
+              <i class="far fa-calendar-alt"></i> 30 APR 2026 · 19:30 WIB
+            </div>
+            <div class="event-title">Valorant Scrim Night</div>
+            <span class="event-game"
+              ><i class="fas fa-crosshairs"></i> Valorant</span
+            >
+            <p class="event-desc">
+              Internal 5v5 customs. Improve comms & strats with coaches.
+            </p>
+            <a href="#" class="event-link"
+              >Join lobby <i class="fas fa-arrow-right"></i
+            ></a>
+          </div>
+          <div class="event-card animate-on-scroll">
+            <div class="event-date">
+              <i class="far fa-calendar-alt"></i> 05 MEI 2026 · 21:00 WIB
+            </div>
+            <div class="event-title">PUBG Survival Cup</div>
+            <span class="event-game"
+              ><i class="fas fa-parachute-box"></i> PUBG</span
+            >
+            <p class="event-desc">
+              Duo & Squad. Chicken dinner earns Midnight points.
+            </p>
+            <a href="#" class="event-link"
+              >More info <i class="fas fa-arrow-right"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MEMBERS / DAFTAR MEMBER -->
+    <section id="members" class="members-section">
+      <div class="container">
+        <div class="section-header animate-on-scroll">
+          <h2 class="section-title">🌙 Core Members</h2>
+          <p class="section-sub">The shadows behind the dominance.</p>
+        </div>
+        <div class="members-grid">
+          <div class="member-card animate-on-scroll">
+            <div class="member-avatar">1</div>
+            <div class="member-name">MID◆YK法</div>
+            <div class="member-role">founder</div>
+            <div class="member-game">
+              <i class="fas fa-skull"></i> Bloodstrike
+            </div>
+          </div>
+          <div class="member-card animate-on-scroll">
+            <div class="member-avatar">2</div>
+            <div class="member-name">MID◆Duch法</div>
+            <div class="member-role">Founder</div>
+            <div class="member-game">
+              <i class="fas fa-skull"></i> Bloodstrike
+            </div>
+          </div>
+          <div class="member-card animate-on-scroll">
+            <div class="member-avatar">3</div>
+            <div class="member-name">MID◆KizaruLV法</div>
+            <div class="member-role">Founder</div>
+            <div class="member-game">
+              <i class="fas fa-skull"></i> Bloodstrike
+            </div>
+          </div>
+          <div class="member-card animate-on-scroll">
+            <div class="member-avatar">4</div>
+            <div class="member-name">MID◆Pawndut法</div>
+            <div class="member-role">Founder</div>
+            <div class="member-game">
+              <i class="fas fa-skull"></i> Bloodstrike
+            </div>
+          </div>
+        </div>
+        <p
+          style="text-align: center; margin-top: 40px; color: #9ca3af"
+          class="animate-on-scroll"
+        >
+          <i class="fas fa-users"></i> +100 active members · scouts & creators
+        </p>
+      </div>
+    </section>
+
+    <!-- BENEFITS / KEUNTUNGAN BERGABUNG -->
+    <section id="benefits" class="benefits-section">
+      <div class="container">
+        <div class="section-header animate-on-scroll">
+          <h2 class="section-title">✨ Why Join Midnight</h2>
+          <p class="section-sub">Exclusive perks for the nocturnal elite.</p>
+        </div>
+        <div class="benefits-grid">
+          <div class="benefit-card animate-on-scroll">
+            <div class="benefit-icon"><i class="fas fa-medal"></i></div>
+            <h3>Vanguard Roles</h3>
+            <p>
+              Special Discord roles, private channels & early access to scrims.
+            </p>
+          </div>
+          <div class="benefit-card animate-on-scroll">
+            <div class="benefit-icon">
+              <i class="fas fa-chalkboard-user"></i>
+            </div>
+            <h3>Coaching & VOD</h3>
+            <p>Free coaching sessions, aim training, and pro analysis.</p>
+          </div>
+          <div class="benefit-card animate-on-scroll">
+            <div class="benefit-icon"><i class="fas fa-trophy"></i></div>
+            <h3>Tournament Access</h3>
+            <p>Priority registration for community cups & sponsored events.</p>
+          </div>
+          <div class="benefit-card animate-on-scroll">
+            <div class="benefit-icon"><i class="fas fa-gem"></i></div>
+            <h3>Midnight Drops</h3>
+            <p>Giveaways, in-game currency, and exclusive merch.</p>
+          </div>
+          <div class="benefit-card animate-on-scroll">
+            <div class="benefit-icon"><i class="fas fa-handshake"></i></div>
+            <h3>Networking</h3>
+            <p>Connect with content creators, casters & competitive players.</p>
+          </div>
+          <div class="benefit-card animate-on-scroll">
+            <div class="benefit-icon"><i class="fas fa-calendar-star"></i></div>
+            <h3>Member-Only Events</h3>
+            <p>Monthly game nights, watch parties & internal tournaments.</p>
           </div>
         </div>
       </div>
@@ -519,7 +883,7 @@
     <!-- CTA Join -->
     <section id="join" class="cta-section">
       <div class="container">
-        <div class="cta-box">
+        <div class="cta-box animate-on-scroll">
           <i
             class="fas fa-meteor"
             style="font-size: 3rem; color: #a78bfa; margin-bottom: 20px"
@@ -602,7 +966,7 @@
 
         function activateNavOnScroll() {
           let index = sections.length;
-          while (--index && window.scrollY + 100 < sections[index].offsetTop) {}
+          while (--index && window.scrollY + 120 < sections[index].offsetTop) {}
           navItems.forEach((link) => link.classList.remove("active"));
           if (index >= 0) {
             const id = sections[index].getAttribute("id");
@@ -614,6 +978,26 @@
         }
         window.addEventListener("scroll", activateNavOnScroll);
         activateNavOnScroll();
+
+        // ---------- ANIMATION ON SCROLL (Intersection Observer) ----------
+        const animatedElements =
+          document.querySelectorAll(".animate-on-scroll");
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+              }
+            });
+          },
+          { threshold: 0.15, rootMargin: "0px 0px -20px 0px" },
+        );
+
+        animatedElements.forEach((el) => observer.observe(el));
+
+        // also observe any future elements (but all are static)
+        // small stagger effect for benefit cards already handled by class
       })();
     </script>
   </body>
