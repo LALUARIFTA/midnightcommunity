@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Scrim Popup</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { background:#0a0e1a; color:#fff; font-family:Inter,sans-serif; min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:20px; }
+    h1 { color:#a78bfa; }
+    .test-btn {
+      background:linear-gradient(135deg,#7c3aed,#a78bfa); border:none; padding:14px 28px;
+      border-radius:12px; color:#fff; font-weight:800; font-size:1rem; cursor:pointer;
+    }
+    .test-btn:hover { transform:translateY(-2px); }
+
+    /* POPUP */
+    .popup-daftar-tim {
+      position:fixed; inset:0; background:rgba(0,0,0,0.85);
+      backdrop-filter:blur(10px); z-index:99999;
+      display:flex; align-items:center; justify-content:center;
+      padding:15px; opacity:0; transition:opacity 0.3s ease;
+    }
+    .popup-daftar-tim.active { opacity:1; }
+    .popup-box {
+      background:linear-gradient(145deg,rgba(8,12,28,0.95),rgba(16,22,46,0.98));
+      border:1px solid rgba(124,58,237,0.4); border-radius:24px;
+      width:100%; max-width:650px; max-height:90vh;
+      overflow-y:auto; position:relative; padding:35px 30px;
+      box-shadow:0 20px 50px rgba(0,0,0,0.8);
+      transform:translateY(20px); transition:transform 0.4s ease;
+    }
+    .popup-daftar-tim.active .popup-box { transform:translateY(0); }
+    .popup-close {
+      position:absolute; top:20px; right:20px;
+      background:transparent; border:none; color:#94a3b8;
+      font-size:1.4rem; cursor:pointer;
+    }
+    .popup-close:hover { color:#f87171; }
+    .popup-header { text-align:center; margin-bottom:25px; }
+    .popup-icon { font-size:2.2rem; color:#a78bfa; margin-bottom:5px; }
+    .popup-header h2 { font-size:1.6rem; margin-bottom:8px; }
+    .popup-badge { font-size:0.8rem; background:rgba(124,58,237,0.2); padding:4px 12px; border-radius:20px; color:#c4b5fd; font-weight:700; }
+    .group-title { font-size:0.9rem; font-weight:800; color:#a78bfa; margin:15px 0 10px; text-transform:uppercase; letter-spacing:1px; }
+    .inp-group { margin-bottom:12px; text-align:left; }
+    .inp-group label { display:block; font-size:0.82rem; font-weight:600; color:#cbd5e1; margin-bottom:5px; }
+    .inp-group input { width:100%; padding:12px 16px; border-radius:12px; background:rgba(0,0,0,0.4); border:1px solid rgba(148,163,184,0.3); color:#fff; font-family:inherit; font-size:0.9rem; }
+    .inp-group input:focus { outline:none; border-color:#a78bfa; background:rgba(124,58,237,0.1); }
+    .inp-grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:15px; }
+    .divider { height:1px; background:rgba(255,255,255,0.08); margin:20px 0; }
+    .btn-solid-glow { background:linear-gradient(135deg,#7c3aed,#a78bfa); border:none; padding:14px; border-radius:12px; color:#fff; font-weight:800; font-size:1rem; cursor:pointer; }
+  </style>
+</head>
+<body>
+
+  <h1>🧪 Test Scrim Popup</h1>
+  <p>Klik tombol di bawah untuk memunculkan popup:</p>
+
+  <button type="button" class="test-btn" onclick="bukaFormScrim('Bloodstrike Scrim', 'Setiap Jumat · 20:00 WIB')">
+    <i class="fas fa-ticket-alt"></i> Daftar Tim Bloodstrike
+  </button>
+  <button type="button" class="test-btn" onclick="bukaFormScrim('Valorant Scrim', 'Setiap Sabtu · 19:30 WIB')">
+    <i class="fas fa-ticket-alt"></i> Daftar Tim Valorant
+  </button>
+  <button type="button" class="test-btn" onclick="bukaFormScrim('PUBG Scrim', 'Setiap Minggu · 21:00 WIB')">
+    <i class="fas fa-ticket-alt"></i> Daftar Tim PUBG
+  </button>
+
+  <!-- POPUP FORM -->
+  <div class="popup-daftar-tim" id="popupScrim" style="display:none;">
+    <div class="popup-box">
+      <button type="button" class="popup-close" onclick="tutupFormScrim()"><i class="fas fa-times"></i></button>
+      <div class="popup-header">
+        <div class="popup-icon"><i class="fas fa-trophy"></i></div>
+        <h2 id="judulScrim">Daftar Tim</h2>
+        <span id="metaScrim" class="popup-badge">📅 Jadwal</span>
+      </div>
+      <form id="formScrim" onsubmit="submitScrim(event)">
+        <h3 class="group-title"><i class="fas fa-users"></i> Identitas Tim</h3>
+        <div class="inp-group">
+          <label>Nama Tim <span style="color:#f87171">*</span></label>
+          <input type="text" id="scrimNamaTim" placeholder="Cth: Midnight Phantom" required />
+        </div>
+        <div class="inp-group">
+          <label>Kontak Manager / PJ (Discord) <span style="color:#f87171">*</span></label>
+          <input type="text" id="scrimKontak" placeholder="usernameDiscord / username#1234" required />
+        </div>
+        <div class="divider"></div>
+        <h3 class="group-title"><i class="fas fa-user-shield"></i> 4 Pemain Utama</h3>
+        <div class="inp-grid-2">
+          <div class="inp-group">
+            <label>Player 1 (Kapten) <span style="color:#f87171">*</span></label>
+            <input type="text" id="scrimP1" placeholder="IGN In-game" required />
+          </div>
+          <div class="inp-group">
+            <label>Player 2 <span style="color:#f87171">*</span></label>
+            <input type="text" id="scrimP2" placeholder="IGN In-game" required />
+          </div>
+          <div class="inp-group">
+            <label>Player 3 <span style="color:#f87171">*</span></label>
+            <input type="text" id="scrimP3" placeholder="IGN In-game" required />
+          </div>
+          <div class="inp-group">
+            <label>Player 4 <span style="color:#f87171">*</span></label>
+            <input type="text" id="scrimP4" placeholder="IGN In-game" required />
+          </div>
+        </div>
+        <div class="divider"></div>
+        <h3 class="group-title"><i class="fas fa-user-clock"></i> 2 Pemain Cadangan (Opsional)</h3>
+        <div class="inp-grid-2">
+          <div class="inp-group">
+            <label>Cadangan 1</label>
+            <input type="text" id="scrimSub1" placeholder="IGN In-game" />
+          </div>
+          <div class="inp-group">
+            <label>Cadangan 2</label>
+            <input type="text" id="scrimSub2" placeholder="IGN In-game" />
+          </div>
+        </div>
+        <button type="submit" id="btnSubmitScrim" class="btn-solid-glow" style="width:100%;margin-top:10px;">
+          <i class="fas fa-paper-plane"></i> Daftarkan Tim
+        </button>
+        <p style="text-align:center;color:#94a3b8;font-size:.8rem;margin-top:10px;">
+          <i class="fas fa-info-circle"></i> Admin akan konfirmasi via Discord dalam 1×24 jam. Gratis.
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    var SCRIM_WEBHOOK = 'https://discord.com/api/webhooks/1493863897999085588/hIjCbaL9ZPPEcj_z-2k0-lSX9uH3zesi5zcwZDITku5BhzsDZmw3Biv9Y5KjzhyHm2Vv';
+    var scrimEvent = '';
+    var scrimJadwal = '';
+
+    function bukaFormScrim(namaEvent, jadwal) {
+      scrimEvent = namaEvent;
+      scrimJadwal = jadwal;
+      var modal = document.getElementById('popupScrim');
+      document.getElementById('judulScrim').innerText = 'Daftar Tim: ' + namaEvent;
+      document.getElementById('metaScrim').innerText = '📅 ' + jadwal;
+      document.getElementById('formScrim').reset();
+      modal.style.display = 'flex';
+      setTimeout(function(){ modal.classList.add('active'); }, 10);
+      document.body.style.overflow = 'hidden';
+    }
+
+    function tutupFormScrim() {
+      var modal = document.getElementById('popupScrim');
+      modal.classList.remove('active');
+      setTimeout(function(){ modal.style.display = 'none'; }, 300);
+      document.body.style.overflow = '';
+    }
+
+    document.getElementById('popupScrim').addEventListener('click', function(e) {
+      if (e.target === this) tutupFormScrim();
+    });
+
+    async function submitScrim(e) {
+      e.preventDefault();
+      var namaTim = document.getElementById('scrimNamaTim').value.trim();
+      var kontak = document.getElementById('scrimKontak').value.trim();
+      var p1 = document.getElementById('scrimP1').value.trim();
+      var p2 = document.getElementById('scrimP2').value.trim();
+      var p3 = document.getElementById('scrimP3').value.trim();
+      var p4 = document.getElementById('scrimP4').value.trim();
+      var s1 = document.getElementById('scrimSub1').value.trim() || '-';
+      var s2 = document.getElementById('scrimSub2').value.trim() || '-';
+
+      if (!namaTim || !kontak || !p1 || !p2 || !p3 || !p4) {
+        alert('Lengkapi nama tim, kontak manager, dan 4 pemain utama!');
+        return;
+      }
+
+      var btn = document.getElementById('btnSubmitScrim');
+      var old = btn.innerHTML;
+      btn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Mengirim...';
+      btn.disabled = true;
+
+      var payload = {
+        embeds: [{
+          title: '\u2694\uFE0F Pendaftaran Scrim \u2014 ' + scrimEvent,
+          color: 7506394,
+          fields: [
+            { name: '\uD83C\uDFAE Event', value: scrimEvent, inline: true },
+            { name: '\uD83D\uDDD3\uFE0F Jadwal', value: scrimJadwal, inline: true },
+            { name: '\u200b', value: '\u200b', inline: false },
+            { name: '\uD83D\uDEE1\uFE0F Nama Tim', value: '**' + namaTim + '**', inline: true },
+            { name: '\uD83D\uDCDE Manager', value: '`' + kontak + '`', inline: true },
+            { name: '\u200b', value: '\u200b', inline: false },
+            { name: '\uD83D\uDC64 P1 (Kapten)', value: '`' + p1 + '`', inline: true },
+            { name: '\uD83D\uDC64 P2', value: '`' + p2 + '`', inline: true },
+            { name: '\uD83D\uDC64 P3', value: '`' + p3 + '`', inline: true },
+            { name: '\uD83D\uDC64 P4', value: '`' + p4 + '`', inline: true },
+            { name: '\u23F1\uFE0F Cad 1', value: '`' + s1 + '`', inline: true },
+            { name: '\u23F1\uFE0F Cad 2', value: '`' + s2 + '`', inline: true }
+          ],
+          footer: { text: 'Midnight Community \u00B7 Scrim Registration' },
+          timestamp: new Date().toISOString()
+        }]
+      };
+
+      try {
+        var res = await fetch(SCRIM_WEBHOOK, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        if (res.ok || res.status === 204) {
+          alert('\u2705 Tim "' + namaTim + '" berhasil didaftarkan!');
+          tutupFormScrim();
+        } else {
+          alert('\u274C Gagal (status ' + res.status + '). Coba lagi.');
+        }
+      } catch(err) {
+        alert('\u274C Error koneksi: ' + err.message);
+      } finally {
+        btn.innerHTML = old;
+        btn.disabled = false;
+      }
+    }
+
+    // Unregister any service workers to fix caching
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then(function(regs) {
+        for (var r of regs) { r.unregister(); }
+      });
+    }
+
+    // Auto-open from URL params (when coming from main site)
+    var params = new URLSearchParams(window.location.search);
+    var autoEvent = params.get('event');
+    var autoJadwal = params.get('jadwal');
+    if (autoEvent) {
+      bukaFormScrim(autoEvent, autoJadwal || '');
+    }
+  </script>
+</body>
+</html>

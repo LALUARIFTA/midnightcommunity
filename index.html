@@ -1,0 +1,1148 @@
+<!doctype html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>midnight community · rise in the dark</title>
+  <meta name="description"
+    content="Komunitas gaming kompetitif untuk Bloodstrike, Valorant, PUBG, dan Roblox. Bergabunglah dengan midnight community – rise from the shadows." />
+  <meta name="keywords"
+    content="midnight community, bloodstrike indonesia, valorant squad, pubg mobile, roblox, komunitas gaming" />
+  <meta property="og:title" content="midnight community · rise in the dark" />
+  <meta property="og:description" content="Divisi elit Bloodstrike, Valorant, PUBG & Roblox. Join the dark side." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://placehold.co/1200x630/02040d/a78bfa?text=midnight+community" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="manifest" href="./manifest.json" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "midnight community",
+    "url": "https://midnight.example.com",
+    "logo": "https://placehold.co/512x512/02040d/a78bfa?text=midnight",
+    "sameAs": [
+      "https://discord.gg/sH4WESmjMK",
+      "https://chat.whatsapp.com/GI8GowQ3lHS9xtiuGK3RuZ",
+      "https://www.tiktok.com/@midnightupzone.id"
+    ]
+  }
+  </script>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+  <!-- tsParticles -->
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="./style.css?v=5" />
+</head>
+
+<body>
+  <!-- ─── PRELOADER ─── -->
+  <div id="preloader">
+    <i class="fas fa-moon moon-loader"></i>
+    <span class="preloader-text">midnight community</span>
+  </div>
+
+  <!-- ─── AMBIENT ─── -->
+  <div id="tsparticles"></div>
+  <div id="mouse-glow"></div>
+  <div id="topProgressBar"></div>
+
+  <!-- ─── SOUNDS ─── -->
+  <audio id="audioHover" src="https://assets.mixkit.co/active_storage/sfx/2571/2571-preview.mp3" preload="auto"></audio>
+  <audio id="audioClick" src="https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3" preload="auto"></audio>
+
+  <!-- ─── FLOATING UI BUTTONS ─── -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <svg class="progress-ring" viewBox="0 0 54 54">
+      <circle class="progress-ring__circle" cx="27" cy="27" r="23" />
+    </svg>
+    <i class="fas fa-arrow-up"></i>
+  </button>
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme"><i class="fas fa-sun"></i></button>
+
+
+
+  <!-- ─── NAVBAR ─── -->
+  <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-container">
+      <a href="#home" class="logo">
+        <i class="fas fa-moon logo-icon"></i>
+        <span class="logo-text">midnight</span>
+      </a>
+
+      <div class="nav-links" id="navLinks">
+        <a href="#home" class="nav-link active">Home</a>
+        <a href="#divisions" class="nav-link">Divisions</a>
+        <a href="#scrim" class="nav-link">Scrim</a>
+        <a href="#members" class="nav-link">Members</a>
+        <a href="#benefits" class="nav-link">Benefits</a>
+        <a href="#bangerz" class="nav-link">Partners</a>
+        <a href="#streamers" class="nav-link">Streamers</a>
+        <a href="#gallery" class="nav-link">Gallery</a>
+        <a href="#join" class="nav-cta"><i class="fas fa-bolt"></i> Join Now</a>
+      </div>
+
+      <div class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════ HERO ═══════════════════ -->
+  <section id="home" class="hero">
+    <div class="container hero-content">
+      <span class="hero-tag animate-on-scroll">
+        <i class="fas fa-crown"></i> #RISE IN THE DARK
+      </span>
+      <h1 class="hero-title animate-on-scroll">
+        MIDNIGHT<br />COMMUNITY
+      </h1>
+      <p class="hero-sub animate-on-scroll">
+        Komunitas gaming kompetitif inklusif — Bloodstrike, Valorant, PUBG, dan Roblox.
+        Bergabunglah. Berkembang. Dominasi dari kegelapan.
+      </p>
+
+      <div class="hero-mission animate-on-scroll">
+        <p><strong>🌙 Visi:</strong> Menjadi komunitas e-sport inklusif yang menjadi wadah bagi setiap individu untuk
+          berkembang, berkompetisi, dan bersosialisasi tanpa batas.</p>
+        <p><strong>⚡ Misi:</strong> Membangun ruang aman, pengembangan potensi tanpa sekat, solidaritas di atas
+          kompetisi, aksesibilitas rekrutmen, dan edukasi etika gaming.</p>
+      </div>
+
+      <!-- Countdown -->
+      <div class="countdown-container animate-on-scroll">
+        <div class="countdown-item">
+          <div class="countdown-number" id="days">00</div>
+          <div class="countdown-label">Hari</div>
+        </div>
+        <div class="countdown-item">
+          <div class="countdown-number" id="hours">00</div>
+          <div class="countdown-label">Jam</div>
+        </div>
+        <div class="countdown-item">
+          <div class="countdown-number" id="minutes">00</div>
+          <div class="countdown-label">Menit</div>
+        </div>
+        <div class="countdown-item">
+          <div class="countdown-number" id="seconds">00</div>
+          <div class="countdown-label">Detik</div>
+        </div>
+      </div>
+      <p style="color:var(--primary-glow);margin-bottom:36px;font-weight:600" id="countdown-label">menuju Bloodstrike
+        Rumble</p>
+
+      <div class="hero-buttons animate-on-scroll">
+        <a href="#divisions" class="btn btn-primary"><i class="fas fa-th-large"></i> Explore Divisions</a>
+        <a href="https://discord.gg/sH4WESmjMK" target="_blank" rel="noopener" class="btn btn-discord"><i
+            class="fab fa-discord"></i> Discord</a>
+        <a href="https://chat.whatsapp.com/GI8GowQ3lHS9xtiuGK3RuZ" target="_blank" rel="noopener" class="wa-btn"><i
+            class="fab fa-whatsapp"></i> WhatsApp</a>
+        <a href="https://www.tiktok.com/@midnightupzone.id" target="_blank" rel="noopener" class="btn btn-outline"><i
+            class="fab fa-tiktok"></i> TikTok</a>
+      </div>
+
+      <!-- Scroll hint -->
+      <div class="scroll-hint animate-on-scroll">
+        <div class="scroll-mouse">
+          <div class="scroll-wheel"></div>
+        </div>
+        <span>Scroll</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ HALL OF FAME ═══════════════════ -->
+  <section id="hof">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="section-badge">🏆 Stats</span>
+        <h2 class="section-title">Hall of Midnight</h2>
+        <p class="section-sub">Angka yang membuktikan dominasi kami</p>
+      </div>
+      <div class="hof-grid">
+        <div class="stat-card animate-on-scroll">
+          <div class="stat-icon"><i class="fas fa-users"></i></div>
+          <div class="stat-num" data-target="100" id="stat-members">0</div>
+          <div class="stat-label">Active Members</div>
+        </div>
+        <div class="stat-card animate-on-scroll">
+          <div class="stat-icon"><i class="fas fa-trophy"></i></div>
+          <div class="stat-num" data-target="12" id="stat-cups">0</div>
+          <div class="stat-label">Tournament Wins</div>
+        </div>
+        <div class="stat-card animate-on-scroll">
+          <div class="stat-icon"><i class="fas fa-gamepad"></i></div>
+          <div class="stat-num" data-target="4" id="stat-games">0</div>
+          <div class="stat-label">Active Divisions</div>
+        </div>
+        <div class="stat-card animate-on-scroll">
+          <div class="stat-icon"><i class="fas fa-fire"></i></div>
+          <div class="stat-num" data-target="18" id="stat-months">0</div>
+          <div class="stat-label">Months Running</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ DIVISIONS ═══════════════════ -->
+  <section id="divisions" class="divisions">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="section-badge">🎮 Divisions</span>
+        <h2 class="section-title">Our Elite Divisions</h2>
+        <p class="section-sub">Competitive rosters ready for the midnight hour</p>
+      </div>
+      <div class="div-grid">
+        <div class="game-card animate-on-scroll" data-game="bloodstrike" tabindex="0">
+          <div class="game-icon"><i class="fas fa-skull"></i></div>
+          <h3>Bloodstrike</h3>
+          <span class="game-tag">FPS · Tactical</span>
+          <p class="game-desc">Strike first. No mercy.</p>
+        </div>
+        <div class="game-card animate-on-scroll" data-game="valorant" tabindex="0">
+          <div class="game-icon"><i class="fas fa-crosshairs"></i></div>
+          <h3>Valorant</h3>
+          <span class="game-tag">Tactical Shooter</span>
+          <p class="game-desc">Precision agents. Radiant mindset.</p>
+        </div>
+        <div class="game-card animate-on-scroll" data-game="pubg" tabindex="0">
+          <div class="game-icon"><i class="fas fa-parachute-box"></i></div>
+          <h3>PUBG</h3>
+          <span class="game-tag">Battle Royale</span>
+          <p class="game-desc">Survive the night. Own the battleground.</p>
+        </div>
+        <div class="game-card animate-on-scroll" data-game="roblox" tabindex="0">
+          <div class="game-icon"><i class="fas fa-cube"></i></div>
+          <h3>Roblox</h3>
+          <span class="game-tag">Metaverse</span>
+          <p class="game-desc">Creative dominance. Midnight experiences.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ SCRIM AGENDA ═══════════════════ -->
+  <section id="scrim" class="events-section">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="section-badge">⚔️ Scrim Agenda</span>
+        <h2 class="section-title">Agenda Scrim</h2>
+        <p class="section-sub">Pilih game, daftarkan tim kamu, dan buktikan dominasi.</p>
+      </div>
+      <div class="scrim-grid">
+        <!-- Bloodstrike -->
+        <div class="scrim-card animate-on-scroll">
+          <div class="scrim-date"><i class="far fa-calendar-alt"></i> SETIAP JUMAT · 20:00 WIB</div>
+          <div class="scrim-game-icon"><i class="fas fa-skull"></i></div>
+          <h3 class="scrim-title">Bloodstrike Scrim</h3>
+          <p class="scrim-desc">Uji koordinasi tim kamu dalam pertempuran internal yang intens. Terbuka untuk semua
+            rank.</p>
+          <button type="button" class="btn-premium-scrim"
+            onclick="bukaFormScrim('Bloodstrike Scrim', 'Setiap Jumat · 20:00 WIB')">
+            <i class="fas fa-paper-plane"></i> Daftar Tim
+          </button>
+        </div>
+
+        <!-- Valorant -->
+        <div class="scrim-card animate-on-scroll">
+          <div class="scrim-date"><i class="far fa-calendar-alt"></i> SETIAP SABTU · 19:30 WIB</div>
+          <div class="scrim-game-icon"><i class="fas fa-crosshairs"></i></div>
+          <h3 class="scrim-title">Valorant Scrim</h3>
+          <p class="scrim-desc">Latih strategi, line-ups, dan aim kamu dalam suasana kompetitif yang sehat.</p>
+          <button type="button" class="btn-premium-scrim"
+            onclick="bukaFormScrim('Valorant Scrim', 'Setiap Sabtu · 19:30 WIB')">
+            <i class="fas fa-paper-plane"></i> Daftar Tim
+          </button>
+        </div>
+
+        <!-- PUBG -->
+        <div class="scrim-card animate-on-scroll">
+          <div class="scrim-date"><i class="far fa-calendar-alt"></i> SETIAP MINGGU · 21:00 WIB</div>
+          <div class="scrim-game-icon"><i class="fas fa-parachute-box"></i></div>
+          <h3 class="scrim-title">PUBG Scrim</h3>
+          <p class="scrim-desc">Pertajam rotasi dan positioning tim kamu. Raih Chicken Dinner dan Midnight Points!</p>
+          <button type="button" class="btn-premium-scrim"
+            onclick="bukaFormScrim('PUBG Scrim', 'Setiap Minggu · 21:00 WIB')">
+            <i class="fas fa-paper-plane"></i> Daftar Tim
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════ MEMBERS ═══════════════════ -->
+  <section id="members" class="members-section">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="section-badge">🌙 Roster</span>
+        <h2 class="section-title">Core Members</h2>
+        <p class="section-sub">The shadows behind the dominance.</p>
+      </div>
+
+      <!-- Search -->
+      <div class="member-search-wrap animate-on-scroll">
+        <i class="fas fa-search"></i>
+        <input type="text" id="memberSearch" placeholder="Cari member..." autocomplete="off" />
+      </div>
+
+      <!-- Filter -->
+      <div class="filter-buttons animate-on-scroll">
+        <button class="filter-btn active" data-filter="all">Semua</button>
+        <button class="filter-btn" data-filter="bloodstrike"><i class="fas fa-skull"></i> Bloodstrike</button>
+        <button class="filter-btn" data-filter="valorant"><i class="fas fa-crosshairs"></i> Valorant</button>
+        <button class="filter-btn" data-filter="pubg"><i class="fas fa-parachute-box"></i> PUBG</button>
+        <button class="filter-btn" data-filter="roblox"><i class="fas fa-cube"></i> Roblox</button>
+      </div>
+
+      <div class="members-grid" id="membersGrid">
+        <div class="member-card animate-on-scroll" data-game="bloodstrike">
+          <div class="member-avatar">1</div>
+          <div class="member-name">MID◆YK法</div>
+          <div class="member-role">Founder Community</div>
+          <div class="member-game"><i class="fas fa-skull"></i> Bloodstrike PC</div>
+        </div>
+        <div class="member-card animate-on-scroll" data-game="bloodstrike">
+          <div class="member-avatar">2</div>
+          <div class="member-name">MID◆Dutch法</div>
+          <div class="member-role">Founder Community</div>
+          <div class="member-game"><i class="fas fa-skull"></i> Bloodstrike PC</div>
+        </div>
+        <div class="member-card animate-on-scroll" data-game="bloodstrike">
+          <div class="member-avatar">3</div>
+          <div class="member-name">MID◆KizaruLV法</div>
+          <div class="member-role">Founder Community</div>
+          <div class="member-game"><i class="fas fa-skull"></i> Bloodstrike PC</div>
+        </div>
+        <div class="member-card animate-on-scroll" data-game="bloodstrike">
+          <div class="member-avatar">4</div>
+          <div class="member-name">MID◆Pawndut法</div>
+          <div class="member-role">Founder Community</div>
+          <div class="member-game"><i class="fas fa-skull"></i> Bloodstrike PC</div>
+        </div>
+        <div class="member-card animate-on-scroll" data-game="bloodstrike">
+          <div class="member-avatar">5</div>
+          <div class="member-name">MID◆Aisara</div>
+          <div class="member-role">Founder BS Mobile</div>
+          <div class="member-game"><i class="fas fa-skull"></i> Bloodstrike Mobile</div>
+        </div>
+        <div class="member-card animate-on-scroll" data-game="bloodstrike">
+          <div class="member-avatar">6</div>
+          <div class="member-name">MID◆Jonatan</div>
+          <div class="member-role">Founder BS Mobile</div>
+          <div class="member-game"><i class="fas fa-skull"></i> Bloodstrike Mobile</div>
+        </div>
+        <div class="member-card animate-on-scroll" data-game="bloodstrike">
+          <div class="member-avatar">7</div>
+          <div class="member-name">MID◆Jneth'BZ</div>
+          <div class="member-role">Founder BANGERZ</div>
+          <div class="member-game"><i class="fas fa-skull"></i> Bloodstrike</div>
+        </div>
+        <div class="member-card animate-on-scroll" data-game="bloodstrike">
+          <div class="member-avatar">8</div>
+          <div class="member-name">MID◆Appar'BZ</div>
+          <div class="member-role">Lead BANGERZ</div>
+          <div class="member-game"><i class="fas fa-skull"></i> Bloodstrike</div>
+        </div>
+        <div class="member-card animate-on-scroll" data-game="bloodstrike">
+          <div class="member-avatar">9</div>
+          <div class="member-name">MID◆Kiwar't1</div>
+          <div class="member-role">Competitive Handler BS Mobile</div>
+          <div class="member-game"><i class="fas fa-skull"></i> Bloodstrike Mobile</div>
+        </div>
+        <div class="member-card animate-on-scroll" data-game="bloodstrike">
+          <div class="member-avatar">10</div>
+          <div class="member-name">MID◆Ivory</div>
+          <div class="member-role">Competitive Handler BS PC</div>
+          <div class="member-game"><i class="fas fa-skull"></i> Bloodstrike PC</div>
+        </div>
+        <div class="member-card animate-on-scroll" data-game="bloodstrike">
+          <div class="member-avatar">11</div>
+          <div class="member-name">MID◆Choo</div>
+          <div class="member-role">Staff Bloodstrike PC</div>
+          <div class="member-game"><i class="fas fa-skull"></i> Bloodstrike PC</div>
+        </div>
+        <div class="member-card animate-on-scroll" data-game="bloodstrike">
+          <div class="member-avatar">12</div>
+          <div class="member-name">MID◆Draa</div>
+          <div class="member-role">Staff Bloodstrike PC</div>
+          <div class="member-game"><i class="fas fa-skull"></i> Bloodstrike PC</div>
+        </div>
+        <div class="member-card animate-on-scroll" data-game="bloodstrike">
+          <div class="member-avatar">13</div>
+          <div class="member-name">MID◆Rizky</div>
+          <div class="member-role">Staff Bloodstrike PC</div>
+          <div class="member-game"><i class="fas fa-skull"></i> Bloodstrike PC</div>
+        </div>
+        <div class="member-card animate-on-scroll" data-game="bloodstrike">
+          <div class="member-avatar">14</div>
+          <div class="member-name">MID◆Mor</div>
+          <div class="member-role">Staff Bloodstrike PC</div>
+          <div class="member-game"><i class="fas fa-skull"></i> Bloodstrike PC</div>
+        </div>
+        <div class="member-card animate-on-scroll" data-game="bloodstrike">
+          <div class="member-avatar">15</div>
+          <div class="member-name">MID◆Chi</div>
+          <div class="member-role">Staff BS Mobile</div>
+          <div class="member-game"><i class="fas fa-skull"></i> Bloodstrike Mobile</div>
+        </div>
+        <div class="member-card animate-on-scroll" data-game="valorant">
+          <div class="member-avatar">16</div>
+          <div class="member-name">MID◆Vice</div>
+          <div class="member-role">IGL Valorant</div>
+          <div class="member-game"><i class="fas fa-crosshairs"></i> Valorant</div>
+        </div>
+        <div class="member-card animate-on-scroll" data-game="pubg">
+          <div class="member-avatar">17</div>
+          <div class="member-name">MID◆Reaper</div>
+          <div class="member-role">Sniper</div>
+          <div class="member-game"><i class="fas fa-parachute-box"></i> PUBG</div>
+        </div>
+        <div class="member-card animate-on-scroll" data-game="roblox">
+          <div class="member-avatar">18</div>
+          <div class="member-name">MID◆Buildr</div>
+          <div class="member-role">Creator</div>
+          <div class="member-game"><i class="fas fa-cube"></i> Roblox</div>
+        </div>
+      </div>
+      <p style="text-align:center;margin-top:44px;color:var(--text-muted)">
+        <i class="fas fa-users"></i> +100 active members · scouts &amp; creators
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ BENEFITS ═══════════════════ -->
+  <section id="benefits" class="benefits-section">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="section-badge">✨ Perks</span>
+        <h2 class="section-title">Why Join Midnight?</h2>
+        <p class="section-sub">Exclusive perks for the nocturnal elite.</p>
+      </div>
+      <div class="benefits-grid">
+        <div class="benefit-card animate-on-scroll">
+          <div class="benefit-icon"><i class="fas fa-medal"></i></div>
+          <h3>Vanguard Roles</h3>
+          <p>Special Discord roles, private channels &amp; early access.</p>
+        </div>
+        <div class="benefit-card animate-on-scroll">
+          <div class="benefit-icon"><i class="fas fa-chalkboard-user"></i></div>
+          <h3>Coaching &amp; VOD</h3>
+          <p>Free coaching sessions, aim training, pro analysis.</p>
+        </div>
+        <div class="benefit-card animate-on-scroll">
+          <div class="benefit-icon"><i class="fas fa-trophy"></i></div>
+          <h3>Tournament Access</h3>
+          <p>Priority registration for community cups &amp; sponsored events.</p>
+        </div>
+        <div class="benefit-card animate-on-scroll">
+          <div class="benefit-icon"><i class="fas fa-gem"></i></div>
+          <h3>Midnight Drops</h3>
+          <p>Giveaways, in-game currency, and exclusive merch.</p>
+        </div>
+        <div class="benefit-card animate-on-scroll">
+          <div class="benefit-icon"><i class="fas fa-handshake"></i></div>
+          <h3>Networking</h3>
+          <p>Connect with content creators, casters &amp; pros.</p>
+        </div>
+        <div class="benefit-card animate-on-scroll">
+          <div class="benefit-icon"><i class="fas fa-calendar-star"></i></div>
+          <h3>Member-Only Events</h3>
+          <p>Monthly game nights, watch parties &amp; internal tournaments.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ PARTNERS (BANGERZ) ═══════════════════ -->
+  <section id="bangerz" class="bangerz-section">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="section-badge">🤝 Partners</span>
+        <h2 class="section-title">Kolaborasi &amp; Sponsor</h2>
+        <p class="section-sub">Mitra resmi yang mendukung ekosistem midnight</p>
+      </div>
+      <div class="partner-grid">
+        <div class="partner-card animate-on-scroll">
+          <div class="partner-logo"
+            style="background:linear-gradient(45deg,#ff4d4d,#ffb347);-webkit-background-clip:text;background-clip:text;color:transparent;">
+            BANGERZ</div>
+          <p style="margin:18px 0;color:var(--text-muted)">Midnight Community resmi bermitra dengan Bangerz untuk scrim
+            bersama, turnamen internal, dan pengembangan talenta.</p>
+          <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+            <a href="https://discord.gg/dwdSD6GZWR" target="_blank" rel="noopener" class="btn btn-discord"
+              style="padding:8px 18px"><i class="fab fa-discord"></i> Bangerz Discord</a>
+            <a href="https://chat.whatsapp.com/ErZNi0NoLSt4HAKMj99caV" target="_blank" rel="noopener" class="wa-btn"
+              style="padding:8px 18px"><i class="fab fa-whatsapp"></i> WhatsApp Kolab</a>
+          </div>
+        </div>
+        <div class="partner-card animate-on-scroll">
+          <div class="partner-logo" style="color:#ffb347">UPZONE.ID</div>
+          <p style="margin:18px 0;color:var(--text-muted)">Midnight Community resmi disponsori oleh UPZONE.ID untuk
+            topup game dengan harga terbaik dan layanan terpercaya.</p>
+          <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+            <a href="https://www.upzone.id/ref/FK0292" target="_blank" rel="noopener" class="btn btn-primary"><i
+                class="fas fa-store"></i> TOPUP ALL GAME</a>
+            <a href="https://chat.whatsapp.com/IW66UJDV6qu7njDYiiLzi8" target="_blank" rel="noopener" class="wa-btn"
+              style="padding:8px 18px"><i class="fab fa-whatsapp"></i> JB Bloodstrike</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ STREAMERS ═══════════════════ -->
+  <section id="streamers" class="streamers-section">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="section-badge">🎥 Content</span>
+        <h2 class="section-title">Midnight Streamers</h2>
+        <p class="section-sub">Ikuti para streamer official &amp; content creator kami</p>
+      </div>
+      <div class="streamers-grid">
+        <div class="streamer-card animate-on-scroll">
+          <div class="streamer-platform"><i class="fab fa-tiktok" style="color:#000;text-shadow:0 0 8px #fff"></i></div>
+          <h2>@midnightupzone.id</h2>
+          <div class="streamer-stats"><i class="fas fa-fire"></i> Official TikTok · 2.5K+ followers</div>
+          <p>Highlight gameplay, tournament moments &amp; midnight vibes.</p>
+          <div class="streamer-social">
+            <a href="https://www.tiktok.com/@midnightupzone.id" target="_blank" rel="noopener"
+              class="btn-streamer tiktok"><i class="fab fa-tiktok"></i> Follow</a>
+          </div>
+        </div>
+        <div class="streamer-card animate-on-scroll">
+          <div class="streamer-platform"><i class="fab fa-tiktok" style="color:#000;text-shadow:0 0 8px #fff"></i></div>
+          <h2>MID◆YK法</h2>
+          <div class="streamer-stats"><i class="fas fa-fire"></i> Live Bloodstrike · 1.8K+ followers</div>
+          <p>Streaming Bloodstrike live &amp; gameplay clips.</p>
+          <div class="streamer-social">
+            <a href="https://www.tiktok.com/@ll.trasna?_r=1&_t=ZS-95Y89ISlCyK" target="_blank" rel="noopener"
+              class="btn-streamer tiktok"><i class="fab fa-tiktok"></i> Follow</a>
+          </div>
+        </div>
+        <div class="streamer-card animate-on-scroll">
+          <div class="streamer-platform"><i class="fab fa-tiktok" style="color:#000;text-shadow:0 0 8px #fff"></i></div>
+          <h2>MID◆Hyu'BZ</h2>
+          <div class="streamer-stats"><i class="fas fa-fire"></i> Live Fun · 1.6K+ followers</div>
+          <p>Streaming Bloodstrike dengan vibes santai tapi kompetitif.</p>
+          <div class="streamer-social">
+            <a href="https://tiktok.com/@hyu_v1" target="_blank" rel="noopener" class="btn-streamer tiktok"><i
+                class="fab fa-tiktok"></i> Follow</a>
+          </div>
+        </div>
+        <div class="streamer-card animate-on-scroll">
+          <div class="streamer-platform"><i class="fab fa-youtube" style="color:#ff0000"></i></div>
+          <h3>MID◆Nejaaa'BZ</h3>
+          <div class="streamer-stats"><i class="fas fa-video"></i> Live Fun · 1.8K subs</div>
+          <p>Streaming Bloodstrike highlight &amp; challenge.</p>
+          <div class="streamer-social">
+            <a href="https://youtube.com/@nejahere" target="_blank" rel="noopener" class="btn-streamer youtube"><i
+                class="fab fa-youtube"></i> Subscribe</a>
+          </div>
+        </div>
+        <div class="streamer-card animate-on-scroll">
+          <div class="streamer-platform"><i class="fab fa-twitch" style="color:#9146ff"></i></div>
+          <h3>MID◆Aisara</h3>
+          <div class="streamer-stats"><i class="fas fa-crown"></i> Live Fun</div>
+          <p>Streaming Bloodstrike Mobile &amp; interactive chat.</p>
+          <div class="streamer-social">
+            <a href="#" target="_blank" rel="noopener" class="btn-streamer twitch"><i class="fab fa-twitch"></i>
+              Watch</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ GALLERY — MIDNIGHT MOMENTS (Flexible) ═══════════════════ -->
+  <section id="gallery" class="gallery-section">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="section-badge">📸 Gallery</span>
+        <h2 class="section-title">Midnight Moments</h2>
+        <p class="section-sub">Geser · klik · drag — momen terbaik kami</p>
+      </div>
+
+      <!-- Arrow controls -->
+      <div class="gallery-controls animate-on-scroll">
+        <button class="gallery-arrow" id="slideLeft" aria-label="Geser kiri"><i
+            class="fas fa-chevron-left"></i></button>
+        <span style="color:var(--text-muted);font-size:.85rem">Drag atau gunakan tombol</span>
+        <button class="gallery-arrow" id="slideRight" aria-label="Geser kanan"><i
+            class="fas fa-chevron-right"></i></button>
+      </div>
+
+      <!-- Drag scroll track -->
+      <div class="gallery-track animate-on-scroll" id="dragGallery">
+
+        <div class="gallery-item" data-full="" data-caption="Juara 1 Bloodstrike Rumble Divisi Major">
+          <div class="gallery-item-icon"><i class="fas fa-trophy" style="color:#fbbf24"></i></div>
+          <h3>Tournament Victory</h3>
+          <p>Juara 1 Bloodstrike Rumble Divisi Major</p>
+        </div>
+
+        <div class="gallery-item" data-full="" data-caption="Gathering offline pertama di Jakarta Selatan">
+          <div class="gallery-item-icon"><i class="fas fa-users" style="color:#60a5fa"></i></div>
+          <h3>Community Meetup</h3>
+          <p>Gathering offline pertama di Jakarta Selatan</p>
+        </div>
+
+        <div class="gallery-item" data-full="" data-caption="Momen clutch 1v5 oleh tim inti Valorant">
+          <div class="gallery-item-icon"><i class="fas fa-gamepad" style="color:#f472b6"></i></div>
+          <h3>Scrim Highlights</h3>
+          <p>Momen clutch 1v5 oleh tim inti Valorant</p>
+        </div>
+
+        <div class="gallery-item" data-full="" data-caption="Rank #1 diraih oleh Founder MID◆YK">
+          <div class="gallery-item-icon"><i class="fas fa-crown" style="color:#a78bfa"></i></div>
+          <h3>Top Global</h3>
+          <p>Rank #1 diraih oleh Founder MID◆YK</p>
+        </div>
+
+        <div class="gallery-item" data-full="" data-caption="Scrim malam perdana divisi PUBG">
+          <div class="gallery-item-icon"><i class="fas fa-parachute-box" style="color:#34d399"></i></div>
+          <h3>PUBG Night Scrim</h3>
+          <p>Scrim malam perdana divisi PUBG</p>
+        </div>
+
+        <div class="gallery-item" data-full="" data-caption="Kolaborasi dengan BANGERZ Community">
+          <div class="gallery-item-icon"><i class="fas fa-handshake" style="color:#fb923c"></i></div>
+          <h3>Kolab BANGERZ</h3>
+          <p>Kolaborasi perdana dengan BANGERZ Community</p>
+        </div>
+
+        <div class="gallery-item" data-full="" data-caption="Streaming marathon 6 jam bersama">
+          <div class="gallery-item-icon"><i class="fas fa-video" style="color:#e879f9"></i></div>
+          <h3>Stream Marathon</h3>
+          <p>Streaming marathon 6 jam bersama seluruh member</p>
+        </div>
+
+        <div class="gallery-item" data-full="" data-caption="Midnight Store — jersey pertama dilaunching">
+          <div class="gallery-item-icon"><i class="fas fa-tshirt" style="color:#38bdf8"></i></div>
+          <h3>Jersey Launch</h3>
+          <p>Midnight Store — jersey pertama dilaunching!</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox Modal -->
+  <div class="lightbox-modal" id="lightboxModal" role="dialog" aria-modal="true">
+    <div class="lightbox-inner">
+      <button id="lightboxClose" aria-label="Tutup"><i class="fas fa-times"></i></button>
+      <img id="lightboxImg" src="" alt="" />
+      <div class="lightbox-caption" id="lightboxCaption"></div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════ MERCH STORE ═══════════════════ -->
+  <section id="merch" class="bangerz-section">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="section-badge">🛍️ Store</span>
+        <h2 class="section-title">Midnight Store</h2>
+        <p class="section-sub">Dukung komunitas dengan perlengkapan resmi</p>
+      </div>
+      <div class="merch-grid animate-on-scroll">
+        <div class="merch-card">
+          <div class="merch-img"><i class="fas fa-tshirt"></i></div>
+          <h3>Midnight Official Jersey 2026</h3>
+          <div class="merch-price">Rp 199.000</div>
+          <p style="color:var(--text-muted);margin-bottom:18px">Bahan dry-fit premium dengan sablon plastisol. Tersedia
+            ukuran M–XXL.</p>
+          <a href="https://wa.me/6288987004237?text=Halo%20saya%20ingin%20memesan%20Jersey%20Midnight"
+            class="btn btn-primary" target="_blank" rel="noopener"
+            style="width:100%;text-align:center;border-radius:40px"><i class="fab fa-whatsapp"></i> Pre-Order Now</a>
+        </div>
+        <div class="merch-card">
+          <div class="merch-img"><i class="fas fa-vest"></i></div>
+          <h3>Midnight × Bangerz Hoodie</h3>
+          <div class="merch-price">Rp 299.000</div>
+          <p style="color:var(--text-muted);margin-bottom:18px">Edisi kolaborasi terbatas. Cotton fleece tebal, bordir
+            logo eksklusif.</p>
+          <a href="#" class="btn btn-outline" style="width:100%;text-align:center;border-radius:40px">Coming Soon</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ FAQ ═══════════════════ -->
+  <section id="faq" class="events-section" style="padding-top:0">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="section-badge">❓ FAQ</span>
+        <h2 class="section-title">Pertanyaan Umum</h2>
+        <p class="section-sub">Pertanyaan yang paling sering diajukan</p>
+      </div>
+      <div class="faq-list animate-on-scroll">
+        <div class="faq-item active">
+          <div class="faq-question">Apakah ada minimal rank untuk join? <i class="fas fa-chevron-down"></i></div>
+          <div class="faq-answer"><br>Tidak ada minimal rank untuk mendaftar sebagai anggota komunitas. Namun, jika
+            menargetkan Divisi Competitive, akan ada proses scrim untuk menentukan kapabilitas role Anda.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Apakah wajib mengubah IGN? <i class="fas fa-chevron-down"></i></div>
+          <div class="faq-answer"><br>Bagi tim inti yang mewakili saat turnamen, wajib menggunakan
+            <code>MID◆[NamaKamu]</code>. Untuk member casual, sangat diapresiasi jika mau memakai tag tersebut.
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Apakah pendaftaran dipungut biaya? <i class="fas fa-chevron-down"></i></div>
+          <div class="faq-answer"><br>100% Gratis. Midnight Community tidak pernah meminta biaya untuk pendaftaran.
+            Waspadai segala penipuan.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Berapa lama proses persetujuan di Discord? <i class="fas fa-chevron-down"></i></div>
+          <div class="faq-answer"><br>Verifikasi data di Discord akan memakan waktu maksimal 1×24 jam. Pastikan DM
+            Discord kamu dalam keadaan terbuka.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ DISCORD WIDGET ═══════════════════ -->
+  <section class="widget-section" style="padding-top:0">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="section-badge">💬 Discord</span>
+        <h2 class="section-title">Join the Midnight Server</h2>
+        <p class="section-sub">See who's online &amp; chat with us</p>
+      </div>
+      <div class="widget-container animate-on-scroll">
+        <div class="discord-status-badge">
+          <span class="status-dot"></span> Server Online · 250+ members
+        </div>
+        <div class="widget-skeleton" id="widgetSkeleton">
+          <i class="fab fa-discord"></i><span>Loading Discord...</span>
+        </div>
+        <iframe id="discordWidget" class="widget-iframe"
+          src="https://discord.com/widget?id=503497366830317578&theme=dark" allowtransparency="true" frameborder="0"
+          sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts" loading="lazy"
+          title="Discord Widget"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ JOIN / FORM ═══════════════════ -->
+  <section id="join" class="cta-section" style="padding-top:0">
+    <div class="container">
+      <div class="form-card animate-on-scroll">
+        <div class="form-header">
+          <span class="section-badge">📝 Daftar</span>
+          <h2>Formulir Pendaftaran</h2>
+          <p>Jadilah bagian dari komunitas Midnight — 100% gratis!</p>
+        </div>
+
+        <form id="registrationForm" novalidate>
+          <!-- Row 1: IGN + Discord -->
+          <div class="form-row">
+            <div class="form-group">
+              <label for="ign">IGN <span style="color:#f87171">*</span></label>
+              <input type="text" id="ign" name="ign" required placeholder="In-game username kamu"
+                autocomplete="username" />
+            </div>
+            <div class="form-group">
+              <label for="discord">Discord <span style="color:#f87171">*</span></label>
+              <input type="text" id="discord" name="discord" required placeholder="username#1234 atau username"
+                autocomplete="off" />
+              <div class="error-message" id="discordError">Format: username#1234 atau username saja</div>
+            </div>
+          </div>
+
+          <!-- Row 2: Email + Game -->
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">Email <span style="color:#f87171">*</span></label>
+              <input type="email" id="email" name="email" required placeholder="email@contoh.com"
+                autocomplete="email" />
+              <div class="error-message" id="emailError">Format email tidak valid</div>
+            </div>
+            <div class="form-group">
+              <label for="game">Game Utama <span style="color:#f87171">*</span></label>
+              <select id="game" name="game" required>
+                <option value="">— Pilih Game —</option>
+                <option value="Bloodstrike PC">Bloodstrike PC</option>
+                <option value="Bloodstrike Mobile">Bloodstrike Mobile</option>
+                <option value="Valorant">Valorant</option>
+                <option value="PUBG Mobile">PUBG Mobile</option>
+                <option value="Roblox">Roblox</option>
+                <option value="Mobile Legends">Mobile Legends</option>
+                <option value="Lainnya">Lainnya</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Pesan -->
+          <div class="form-group">
+            <label for="pesan">Pesan / Motivasi <span style="color:var(--text-muted)">(opsional)</span></label>
+            <textarea id="pesan" name="pesan" rows="3"
+              placeholder="Ceritakan sedikit tentang kamu atau motivasi bergabung..."></textarea>
+          </div>
+
+          <button type="submit" class="btn-submit" id="submitBtn">
+            <i class="fas fa-paper-plane"></i> Daftar Sekarang
+          </button>
+
+          <p class="form-note">
+            <i class="fas fa-lock"></i> Data kamu aman. Tidak ada biaya pendaftaran.
+            Cek Discord dalam 1×24 jam setelah daftar.
+          </p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ FOOTER ═══════════════════ -->
+  <footer>
+    <div class="container footer-content">
+      <i class="fas fa-moon" style="color:var(--primary-glow)"></i>
+      <span>© 2026 <strong>midnight community</strong></span>
+      <span style="color:var(--text-muted)">·</span>
+      <a href="https://discord.gg/sH4WESmjMK" target="_blank" rel="noopener"><i class="fab fa-discord"></i></a>
+      <a href="https://chat.whatsapp.com/GI8GowQ3lHS9xtiuGK3RuZ" target="_blank" rel="noopener"><i
+          class="fab fa-whatsapp"></i></a>
+      <a href="https://www.tiktok.com/@midnightupzone.id" target="_blank" rel="noopener"><i
+          class="fab fa-tiktok"></i></a>
+      <span style="color:var(--text-muted)">· @ashari.ll</span>
+    </div>
+  </footer>
+
+  <!-- ─── MEMBER MODAL ─── -->
+  <div class="member-modal-overlay" id="memberModalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalName">
+    <div class="member-modal">
+      <i class="fas fa-times modal-close" id="closeModalBtn" aria-label="Tutup modal"></i>
+      <div class="modal-avatar" id="modalAvatar">?</div>
+      <div class="modal-name" id="modalName">Nama Member</div>
+      <div class="modal-role" id="modalRole">Role Member</div>
+      <div class="modal-stats">
+        <span class="stat-badge" id="modalGame"><i class="fas fa-gamepad"></i> Game</span>
+        <span class="stat-badge"><i class="fas fa-star"></i> Core Roster</span>
+      </div>
+      <p style="color:#cbd5e1;margin-bottom:22px;font-size:.9rem;font-style:italic">
+        "Dedikasi dan konsistensi di setiap sesi. Berjuang bersama dari kegelapan untuk meraih kejayaan."
+      </p>
+      <div class="modal-socials">
+        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── SCRIM REGISTRATION POPUP ─── -->
+  <div class="popup-daftar-tim" id="popupScrim" style="display:none;">
+    <div class="popup-box">
+      <button type="button" class="popup-close" onclick="tutupFormScrim()" aria-label="Tutup"><i
+          class="fas fa-times"></i></button>
+      <div class="popup-header">
+        <div class="popup-icon"><i class="fas fa-trophy"></i></div>
+        <h2 id="judulScrim">Daftar Tim</h2>
+        <span id="metaScrim" class="popup-badge">📅 Jadwal</span>
+      </div>
+      <form id="formScrim" onsubmit="submitScrim(event)">
+        <h3 class="group-title"><i class="fas fa-users"></i> Identitas Tim</h3>
+        <div class="inp-group">
+          <label>Nama Tim <span style="color:#f87171">*</span></label>
+          <input type="text" id="scrimNamaTim" placeholder="Cth: Midnight Phantom" required />
+        </div>
+        <div class="inp-group">
+          <label>Kontak Manager / PJ (Discord) <span style="color:#f87171">*</span></label>
+          <input type="text" id="scrimKontak" placeholder="usernameDiscord / username#1234" required />
+        </div>
+        <div class="divider"></div>
+        <h3 class="group-title"><i class="fas fa-user-shield"></i> 4 Pemain Utama</h3>
+        <div class="inp-grid-2">
+          <div class="inp-group">
+            <label>Player 1 (Kapten) <span style="color:#f87171">*</span></label>
+            <input type="text" id="scrimP1" placeholder="IGN In-game" required />
+          </div>
+          <div class="inp-group">
+            <label>Player 2 <span style="color:#f87171">*</span></label>
+            <input type="text" id="scrimP2" placeholder="IGN In-game" required />
+          </div>
+          <div class="inp-group">
+            <label>Player 3 <span style="color:#f87171">*</span></label>
+            <input type="text" id="scrimP3" placeholder="IGN In-game" required />
+          </div>
+          <div class="inp-group">
+            <label>Player 4 <span style="color:#f87171">*</span></label>
+            <input type="text" id="scrimP4" placeholder="IGN In-game" required />
+          </div>
+        </div>
+        <div class="divider"></div>
+        <h3 class="group-title"><i class="fas fa-user-clock"></i> 2 Pemain Cadangan (Opsional)</h3>
+        <div class="inp-grid-2">
+          <div class="inp-group">
+            <label>Cadangan 1</label>
+            <input type="text" id="scrimSub1" placeholder="IGN In-game" />
+          </div>
+          <div class="inp-group">
+            <label>Cadangan 2</label>
+            <input type="text" id="scrimSub2" placeholder="IGN In-game" />
+          </div>
+        </div>
+        <button type="submit" id="btnSubmitScrim" class="btn-solid-glow" style="width:100%;margin-top:10px;">
+          <i class="fas fa-paper-plane"></i> Daftarkan Tim
+        </button>
+        <p style="text-align:center;color:#94a3b8;font-size:.8rem;margin-top:10px;"><i class="fas fa-info-circle"></i>
+          Admin akan konfirmasi via Discord dalam 1×24 jam. Gratis.</p>
+      </form>
+    </div>
+  </div>
+
+
+  <!-- POPUP FORM -->
+  <div class="popup-daftar-tim" id="popupScrim" style="display:none;">
+    <div class="popup-box">
+      <button type="button" class="popup-close" onclick="tutupFormScrim()"><i class="fas fa-times"></i></button>
+      <div class="popup-header">
+        <div class="popup-icon"><i class="fas fa-trophy"></i></div>
+        <h2 id="judulScrim">Daftar Tim</h2>
+        <span id="metaScrim" class="popup-badge">📅 Jadwal</span>
+      </div>
+      <form id="formScrim" onsubmit="submitScrim(event)">
+        <h3 class="group-title"><i class="fas fa-users"></i> Identitas Tim</h3>
+        <div class="inp-group">
+          <label>Nama Tim <span style="color:#f87171">*</span></label>
+          <input type="text" id="scrimNamaTim" placeholder="Cth: Midnight Phantom" required />
+        </div>
+        <div class="inp-group">
+          <label>Kontak Manager / PJ (Discord) <span style="color:#f87171">*</span></label>
+          <input type="text" id="scrimKontak" placeholder="usernameDiscord / username#1234" required />
+        </div>
+        <div class="divider"></div>
+        <h3 class="group-title"><i class="fas fa-user-shield"></i> 4 Pemain Utama</h3>
+        <div class="inp-grid-2">
+          <div class="inp-group">
+            <label>Player 1 (Kapten) <span style="color:#f87171">*</span></label>
+            <input type="text" id="scrimP1" placeholder="IGN In-game" required />
+          </div>
+          <div class="inp-group">
+            <label>Player 2 <span style="color:#f87171">*</span></label>
+            <input type="text" id="scrimP2" placeholder="IGN In-game" required />
+          </div>
+          <div class="inp-group">
+            <label>Player 3 <span style="color:#f87171">*</span></label>
+            <input type="text" id="scrimP3" placeholder="IGN In-game" required />
+          </div>
+          <div class="inp-group">
+            <label>Player 4 <span style="color:#f87171">*</span></label>
+            <input type="text" id="scrimP4" placeholder="IGN In-game" required />
+          </div>
+        </div>
+        <div class="divider"></div>
+        <h3 class="group-title"><i class="fas fa-user-clock"></i> 2 Pemain Cadangan (Opsional)</h3>
+        <div class="inp-grid-2">
+          <div class="inp-group">
+            <label>Cadangan 1</label>
+            <input type="text" id="scrimSub1" placeholder="IGN In-game" />
+          </div>
+          <div class="inp-group">
+            <label>Cadangan 2</label>
+            <input type="text" id="scrimSub2" placeholder="IGN In-game" />
+          </div>
+        </div>
+        <button type="submit" id="btnSubmitScrim" class="btn-solid-glow" style="width:100%;margin-top:10px;">
+          <i class="fas fa-paper-plane"></i> Daftarkan Tim
+        </button>
+        <p style="text-align:center;color:#94a3b8;font-size:.8rem;margin-top:10px;">
+          <i class="fas fa-info-circle"></i> Admin akan konfirmasi via Discord dalam 1×24 jam. Gratis.
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <!-- ─── INLINE SCRIM SCRIPT ─── -->
+
+  <!-- ─── SCRIM REGISTRATION POPUP ─── -->
+  <div class="popup-daftar-tim" id="popupScrim" style="display:none;">
+    <div class="popup-box">
+      <button type="button" class="popup-close" onclick="tutupFormScrim()" aria-label="Tutup"><i
+          class="fas fa-times"></i></button>
+      <div class="popup-header">
+        <div class="popup-icon"><i class="fas fa-trophy"></i></div>
+        <h2 id="judulScrim">Daftar Tim</h2>
+        <span id="metaScrim" class="popup-badge">📅 Jadwal</span>
+      </div>
+      <form id="formScrim" onsubmit="submitScrim(event)">
+        <h3 class="group-title"><i class="fas fa-users"></i> Identitas Tim</h3>
+        <div class="inp-group">
+          <label>Nama Tim <span style="color:#f87171">*</span></label>
+          <input type="text" id="scrimNamaTim" placeholder="Cth: Midnight Phantom" required />
+        </div>
+        <div class="inp-group">
+          <label>Kontak Manager / PJ (Discord) <span style="color:#f87171">*</span></label>
+          <input type="text" id="scrimKontak" placeholder="usernameDiscord / username#1234" required />
+        </div>
+
+        <div class="divider"></div>
+
+        <h3 class="group-title"><i class="fas fa-user-shield"></i> 4 Pemain Utama</h3>
+        <div class="inp-grid-2">
+          <div class="inp-group">
+            <label>Player 1 (Kapten) <span style="color:#f87171">*</span></label>
+            <input type="text" id="scrimP1" placeholder="IGN In-game" required />
+          </div>
+          <div class="inp-group">
+            <label>Player 2 <span style="color:#f87171">*</span></label>
+            <input type="text" id="scrimP2" placeholder="IGN In-game" required />
+          </div>
+          <div class="inp-group">
+            <label>Player 3 <span style="color:#f87171">*</span></label>
+            <input type="text" id="scrimP3" placeholder="IGN In-game" required />
+          </div>
+          <div class="inp-group">
+            <label>Player 4 <span style="color:#f87171">*</span></label>
+            <input type="text" id="scrimP4" placeholder="IGN In-game" required />
+          </div>
+        </div>
+
+        <div class="divider"></div>
+
+        <h3 class="group-title"><i class="fas fa-user-clock"></i> 2 Pemain Cadangan (Opsional)</h3>
+        <div class="inp-grid-2">
+          <div class="inp-group">
+            <label>Cadangan 1</label>
+            <input type="text" id="scrimSub1" placeholder="IGN In-game" />
+          </div>
+          <div class="inp-group">
+            <label>Cadangan 2</label>
+            <input type="text" id="scrimSub2" placeholder="IGN In-game" />
+          </div>
+        </div>
+
+        <button type="submit" id="btnSubmitScrim" class="btn-premium-scrim" style="width:100%; margin-top:15px;">
+          <i class="fas fa-paper-plane"></i> Daftarkan Tim
+        </button>
+        <p style="text-align:center; color:#94a3b8; font-size:.8rem; margin-top:12px;">
+          <i class="fas fa-info-circle"></i> Admin akan konfirmasi via Discord dalam 1×24 jam.
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      const SCRIM_WEBHOOK = 'https://discord.com/api/webhooks/1493863897999085588/hIjCbaL9ZPPEcj_z-2k0-lSX9uH3zesi5zcwZDITku5BhzsDZmw3Biv9Y5KjzhyHm2Vv';
+      let currentEvent = '';
+      let currentJadwal = '';
+
+      // Global functions for Scrim Popup
+      window.bukaFormScrim = function (namaEvent, jadwal) {
+        currentEvent = namaEvent;
+        currentJadwal = jadwal;
+        const modal = document.getElementById('popupScrim');
+        if (!modal) return;
+
+        document.getElementById('judulScrim').innerText = 'Daftar Tim: ' + namaEvent;
+        document.getElementById('metaScrim').innerText = '📅 ' + jadwal;
+        document.getElementById('formScrim').reset();
+
+        modal.style.display = 'flex';
+        setTimeout(() => modal.classList.add('active'), 10);
+        document.body.style.overflow = 'hidden';
+      };
+
+      window.tutupFormScrim = function () {
+        const modal = document.getElementById('popupScrim');
+        if (!modal) return;
+        modal.classList.remove('active');
+        setTimeout(() => modal.style.display = 'none', 300);
+        document.body.style.overflow = '';
+      };
+
+      // Close on background click
+      const popup = document.getElementById('popupScrim');
+      if (popup) {
+        popup.addEventListener('click', (e) => {
+          if (e.target === popup) window.tutupFormScrim();
+        });
+      }
+
+      window.submitScrim = async function (e) {
+        e.preventDefault();
+        const namaTim = document.getElementById('scrimNamaTim').value.trim();
+        const kontak = document.getElementById('scrimKontak').value.trim();
+        const players = [
+          document.getElementById('scrimP1').value.trim(),
+          document.getElementById('scrimP2').value.trim(),
+          document.getElementById('scrimP3').value.trim(),
+          document.getElementById('scrimP4').value.trim()
+        ];
+        const sub1 = document.getElementById('scrimSub1').value.trim() || '-';
+        const sub2 = document.getElementById('scrimSub2').value.trim() || '-';
+
+        const btn = document.getElementById('btnSubmitScrim');
+        const oldContent = btn.innerHTML;
+        btn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Sedang Mengirim...';
+        btn.disabled = true;
+
+        const payload = {
+          embeds: [{
+            title: '⚔️ Pendaftaran Scrim — ' + currentEvent,
+            color: 7506394,
+            fields: [
+              { name: '🎮 Event', value: currentEvent, inline: true },
+              { name: '🗓️ Jadwal', value: currentJadwal, inline: true },
+              { name: '\u200b', value: '\u200b', inline: false },
+              { name: '🛡️ Nama Tim', value: '**' + namaTim + '**', inline: true },
+              { name: '📞 Manager (Discord)', value: '`' + kontak + '`', inline: true },
+              { name: '\u200b', value: '\u200b', inline: false },
+              { name: '👤 Player 1 (Kapten)', value: '`' + players[0] + '`', inline: true },
+              { name: '👤 Player 2', value: '`' + players[1] + '`', inline: true },
+              { name: '👤 Player 3', value: '`' + players[2] + '`', inline: true },
+              { name: '👤 Player 4', value: '`' + players[3] + '`', inline: true },
+              { name: '⏳ Cadangan 1', value: '`' + sub1 + '`', inline: true },
+              { name: '⏳ Cadangan 2', value: '`' + sub2 + '`', inline: true }
+            ],
+            footer: { text: 'Midnight Community · System Registration' },
+            timestamp: new Date().toISOString()
+          }]
+        };
+
+        try {
+          const res = await fetch(SCRIM_WEBHOOK, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+          if (res.ok || res.status === 204) {
+            alert('✅ Tim "' + namaTim + '" berhasil didaftarkan! Admin akan segera mengonfirmasi.');
+            window.tutupFormScrim();
+          } else {
+            alert('❌ Gagal mendaftar (Status: ' + res.status + '). Coba lagi nanti.');
+          }
+        } catch (err) {
+          alert('❌ Kesalahan koneksi. Pastikan internet Anda aktif.');
+        } finally {
+          btn.innerHTML = oldContent;
+          btn.disabled = false;
+        }
+      };
+
+      // Handle Service Worker / PWA stuff if needed
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.getRegistrations().then(regs => {
+          for (let r of regs) r.unregister();
+        });
+      }
+    })();
+  </script>
+  <!-- ─── MAIN SCRIPT ─── -->
+  <script src="./script.js?v=8" defer></script>
+</body>
+
+</html>
