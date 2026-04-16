@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>Midnight Top-Up Store</title>
+  <meta name="description" content="Top-Up resmi Midnight Community. Beli Gold Bloodstrike, Valorant Points, dan Diamond MLBB dengan aman dan cepat melalui WhatsApp." />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+  <!-- tsParticles -->
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
+
+  <link rel="stylesheet" href="./style.css?v=6" />
+</head>
+
+<body>
+  <!-- ─── PRELOADER ─── -->
+  <div id="preloader">
+    <i class="fas fa-store moon-loader"></i>
+    <span class="preloader-text">midnight store</span>
+  </div>
+
+  <!-- ─── AMBIENT ─── -->
+  <div id="tsparticles"></div>
+  <div id="mouse-glow"></div>
+  <div id="topProgressBar"></div>
+
+  <!-- ─── FLOATING UI BUTTONS ─── -->
+  <a href="index.html" class="back-to-top visible" style="bottom: 90px; text-decoration: none;" aria-label="Back to home">
+    <i class="fas fa-home"></i>
+  </a>
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+    <i class="fas fa-sun"></i>
+  </button>
+
+  <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-container">
+      <a href="index.html#home" class="logo">
+        <i class="fas fa-moon logo-icon"></i>
+        <span class="logo-text">MIDNIGHT</span>
+      </a>
+
+      <div class="nav-links" id="navLinks">
+        <a href="index.html#home" class="nav-link">Home</a>
+        <a href="index.html#divisions" class="nav-link">Divisions</a>
+        <a href="index.html#scrim" class="nav-link">Scrim</a>
+        <a href="index.html#members" class="nav-link">Members</a>
+        <a href="members.html" class="nav-link"><i class="fas fa-database"></i> Database</a>
+        <a href="index.html#benefits" class="nav-link">Benefits</a>
+        <a href="index.html#bangerz" class="nav-link">Partners</a>
+        <a href="index.html#streamers" class="nav-link">Streamers</a>
+        <a href="index.html#gallery" class="nav-link">Gallery</a>
+        <a href="topup.html" class="nav-link active" style="color: var(--primary-glow);"><i class="fas fa-store"></i> Top-Up</a>
+        <a href="index.html#join" class="nav-cta"><i class="fas fa-bolt"></i> Join Now</a>
+      </div>
+
+      <div class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
+  </nav>
+
+  <!-- TOPUP HEADER -->
+  <section class="hero" style="min-height: 40vh; padding-top: 120px; padding-bottom: 20px;">
+    <div class="container hero-content" style="text-align: center;">
+      <span class="hero-tag animate-on-scroll">
+        <i class="fas fa-shopping-cart"></i> #MIDNIGHT STORE
+      </span>
+      <h1 class="hero-title animate-on-scroll" style="font-size: 3.5rem;">TOP-UP<br /><span style="color: var(--primary-glow)">CENTER</span></h1>
+      <p class="hero-sub animate-on-scroll" style="margin: 0 auto; max-width: 600px;">
+        Pusat top-up game resmi Midnight Community. Proses cepat, harga termurah, 100% aman dan terpercaya!
+      </p>
+    </div>
+  </section>
+
+  <!-- TOPUP STORE SYSTEM -->
+  <section id="store-section" class="events-section" style="padding-top: 20px;">
+    <div class="container">
+      
+      <div class="topup-container">
+        <!-- STEP 1: PILIH GAME -->
+        <div class="topup-card animate-on-scroll">
+          <div class="topup-step-header">
+            <div class="step-num">1</div>
+            <h2>Pilih Game</h2>
+          </div>
+          <div class="games-grid" id="gamesGrid">
+            <!-- Dinamis via JS -->
+          </div>
+        </div>
+
+        <!-- STEP 2: NOMINAL (HIDDEN BY DEFAULT) -->
+        <div class="topup-card" id="packagesSection" style="display: none; opacity: 0; transition: .4s;">
+          <div class="topup-step-header">
+            <div class="step-num">2</div>
+            <h2>Pilih Nominal</h2>
+          </div>
+          <div class="packages-grid" id="packagesGrid">
+            <!-- Dinamis via JS -->
+          </div>
+        </div>
+
+        <!-- STEP 3: FORM & CHECKOUT (HIDDEN BY DEFAULT) -->
+        <div class="topup-card" id="checkoutSection" style="display: none; opacity: 0; transition: .4s;">
+          <div class="topup-step-header">
+            <div class="step-num">3</div>
+            <h2>Data Player & Pembayaran</h2>
+          </div>
+          <form id="topupForm" class="topup-form">
+            <div class="form-row">
+              <div class="inp-group">
+                <label>
+                  Player ID / User ID <span style="color: #ef4444">*</span>
+                  <button type="button" class="id-guide-btn" onclick="openIdGuide()">
+                    <i class="fas fa-question-circle"></i> Di mana ID saya?
+                  </button>
+                </label>
+                <input type="text" id="playerId" placeholder="Contoh: 12345678" required />
+              </div>
+              <div class="inp-group" id="serverZoneGroup" style="display: none;">
+                <label>Zone ID / Server <span style="color: #ef4444">*</span></label>
+                <input type="text" id="zoneId" placeholder="Contoh: 1234" />
+              </div>
+            </div>
+            <div class="inp-group">
+              <label>Nickname In-Game</label>
+              <input type="text" id="playerNick" placeholder="Contoh: MidnightUser" />
+            </div>
+
+            <div class="summary-box">
+              <h3>Ringkasan Pesanan</h3>
+              <div class="sum-row"><span class="sum-label">Game</span> <span class="sum-val" id="sumGame">-</span></div>
+              <div class="sum-row"><span class="sum-label">Item</span> <span class="sum-val" id="sumItem">-</span></div>
+              <div class="sum-row"><span class="sum-label">Harga</span> <span class="sum-price" id="sumPrice">Rp 0</span></div>
+            </div>
+
+            <button type="submit" class="btn-solid-glow" style="width: 100%; border-radius: 8px; font-size: 1.1rem; padding: 14px;">
+              <i class="fab fa-whatsapp"></i> Beli via WhatsApp
+            </button>
+            
+            <div class="payment-section">
+              <span class="payment-title">Metode Pembayaran</span>
+              <div class="payment-grid">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a2/Logo_QRIS.svg" alt="QRIS" class="payment-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/7/72/Logo_dana_blue.svg" alt="Dana" class="payment-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/e/ee/Logo_gopay.svg" alt="GoPay" class="payment-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/e/eb/Logo_ovo_purple.svg" alt="OVO" class="payment-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Bank_Central_Asia.svg" alt="BCA" class="payment-logo">
+              </div>
+            </div>
+
+            <p class="form-note" style="text-align: center; margin-top: 15px; font-size: .85rem; color: var(--text-muted);">
+              Anda akan diarahkan ke WhatsApp Admin untuk menyelesaikan pembayaran.
+            </p>
+          </form>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <span>© 2024 Midnight Community.</span>
+        <a href="https://discord.gg/sH4WESmjMK" target="_blank" rel="noopener"><i class="fab fa-discord"></i> Discord</a>
+        <a href="https://chat.whatsapp.com/GI8GowQ3lHS9xtiuGK3RuZ" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        <a href="https://www.tiktok.com/@midnightupzone.id" target="_blank" rel="noopener"><i class="fab fa-tiktok"></i> TikTok</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ID GUIDE MODAL -->
+  <div class="id-guide-modal" id="idGuideModal">
+    <div class="modal-content-wrap animate-on-scroll">
+      <button class="modal-close" onclick="closeIdGuide()"><i class="fas fa-times"></i></button>
+      <h3 id="modalTitle">Cara Cek ID</h3>
+      <img src="" id="guideImg" class="guide-img" alt="ID Guide">
+      <p style="margin-top: 15px; font-size: 0.9rem; color: var(--text-muted);">Salin nomor ID yang tertera pada profil game Anda.</p>
+    </div>
+  </div>
+
+  <script src="./topup.js"></script>
+</body>
+</html>

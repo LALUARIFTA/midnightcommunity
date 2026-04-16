@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>Midnight Community · Members Database</title>
+  <meta name="description"
+    content="Database resmi anggota Midnight Community. Diperbarui secara real-time melalui Google Sheets." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+  <!-- tsParticles -->
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
+
+  <link rel="stylesheet" href="./style.css?v=6" />
+  <style>
+    .members-hero {
+      padding: 140px 0 60px;
+      text-align: center;
+      background: radial-gradient(circle at top, rgba(124, 58, 237, 0.15) 0%, transparent 70%);
+    }
+
+    .loading-spinner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 100px 0;
+      color: var(--primary-glow);
+    }
+
+    .loading-spinner i {
+      font-size: 3rem;
+      margin-bottom: 15px;
+    }
+
+    #membersGrid {
+      min-height: 400px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ─── AMBIENT ─── -->
+  <div id="tsparticles"></div>
+  <div id="mouse-glow"></div>
+  <div id="topProgressBar"></div>
+
+  <nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-container">
+      <a href="index.html#home" class="logo">
+        <i class="fas fa-moon logo-icon"></i>
+        <span class="logo-text">MIDNIGHT</span>
+      </a>
+
+      <div class="nav-links" id="navLinks">
+        <a href="index.html#home" class="nav-link">Home</a>
+        <a href="index.html#divisions" class="nav-link">Divisions</a>
+        <a href="index.html#scrim" class="nav-link">Scrim</a>
+        <a href="index.html#members" class="nav-link">Members</a>
+        <a href="members.html" class="nav-link active"><i class="fas fa-database"></i> Database</a>
+        <a href="index.html#benefits" class="nav-link">Benefits</a>
+        <a href="index.html#bangerz" class="nav-link">Partners</a>
+        <a href="index.html#streamers" class="nav-link">Streamers</a>
+        <a href="index.html#gallery" class="nav-link">Gallery</a>
+        <a href="topup.html" class="nav-link" style="color: var(--primary-glow);"><i class="fas fa-store"></i>
+          Top-Up</a>
+        <a href="index.html#join" class="nav-cta"><i class="fas fa-bolt"></i> Join Now</a>
+      </div>
+
+      <div class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+        <i class="fas fa-bars"></i>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="members-hero">
+    <div class="container">
+      <span class="section-badge"><i class="fas fa-database"></i> Live Database</span>
+      <h1 class="hero-title">MEMBERS<br /><span style="color: var(--primary-glow)">COMMUNITY</span></h1>
+      <p class="hero-sub">Daftar anggota Midnight Community.</p>
+
+      <!-- Search & Filter -->
+      <div class="member-search-wrap" style="margin-top: 40px; max-width: 600px; margin-left: auto; margin-right: auto;">
+        <i class="fas fa-search"></i>
+        <input type="text" id="memberSearch" placeholder="Cari nama member, role, atau game..."
+          onkeyup="filterMembers()" />
+      </div>
+
+      <!-- Category Tabs -->
+      <div class="member-categories-filter animate-on-scroll" style="margin-top: 25px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+        <button class="filter-btn active" onclick="setCategory('all')">All</button>
+        <button class="filter-btn" onclick="setCategory('bloodstrike')">Bloodstrike</button>
+        <button class="filter-btn" onclick="setCategory('valorant')">Valorant</button>
+        <button class="filter-btn" onclick="setCategory('mobile legends')">MLBB</button>
+        <button class="filter-btn" onclick="setCategory('roblox')">Roblox</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- MEMBERS GRID -->
+  <section class="members-section" style="padding-top: 0;">
+    <div class="container">
+      <div id="loading" class="loading-spinner">
+        <i class="fas fa-circle-notch fa-spin"></i>
+        <p>Menghubungkan ke Google Sheets...</p>
+      </div>
+
+      <div class="members-grid" id="membersGrid">
+        <!-- Rendered by members.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footer-content">
+      <span>© 2026 <strong>midnight community</strong></span>
+      <span style="color: var(--text-muted)">·</span>
+      <a href="https://discord.gg/sH4WESmjMK" target="_blank"><i class="fab fa-discord"></i></a>
+      <a href="https://www.tiktok.com/@midnightupzone.id" target="_blank"><i class="fab fa-tiktok"></i></a>
+    </div>
+  </footer>
+
+  <!-- MEMBER MODAL -->
+  <div class="member-modal-overlay" id="memberModalOverlay">
+    <div class="member-modal">
+      <i class="fas fa-times modal-close" onclick="closeModal()"></i>
+      <div class="modal-avatar" id="modalAvatar">?</div>
+      <div class="modal-name" id="modalName">-</div>
+      <div class="modal-role" id="modalRole">-</div>
+      <div class="modal-tabs">
+        <button class="tab-btn active" style="width: 100%;">BIOGRAPHY</button>
+      </div>
+      <div class="tab-content active" id="tab-bio">-</div>
+      <div class="modal-stats">
+        <span class="stat-badge" id="modalGame"><i class="fas fa-gamepad"></i> -</span>
+      </div>
+      <div class="modal-socials">
+        <a href="#" id="m-ig" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="#" id="m-tt" target="_blank"><i class="fab fa-tiktok"></i></a>
+        <a href="#" id="m-yt" target="_blank"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <script src="./members.js"></script>
+</body>
+
+</html>
