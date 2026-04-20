@@ -43,6 +43,9 @@
   <!-- tsParticles -->
   <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
 
+  <!-- HLS.js for .m3u8 video background -->
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+
   <!-- Main CSS -->
   <link rel="stylesheet" href="./style.css?v=5" />
 </head>
@@ -55,6 +58,10 @@
   </div>
 
   <!-- ─── AMBIENT ─── -->
+  <div class="global-video-bg">
+    <video id="video-bg" muted loop playsinline></video>
+    <div class="global-video-overlay"></div>
+  </div>
   <div id="tsparticles"></div>
   <div id="mouse-glow"></div>
   <div id="topProgressBar"></div>
@@ -1101,6 +1108,7 @@
   </div>
 
   <!-- ─── MAIN SCRIPT ─── -->
+  <script src="./background-video.js" defer></script>
   <script src="./script.js?v=9" defer></script>
 </body>
 

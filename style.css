@@ -165,6 +165,39 @@ button,
   cursor: pointer;
 }
 
+/* ---------- GLOBAL VIDEO BACKGROUND ---------- */
+.global-video-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -3; /* Behind tsparticles which is -2 */
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.global-video-bg video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  opacity: 0.8; /* Optimized clarity */
+  filter: brightness(0.9) contrast(1.1);
+}
+
+.global-video-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(2, 4, 13, 0) 0%, rgba(2, 4, 13, 0.6) 100%);
+  z-index: -2.5;
+}
+
 /* ---------- SCROLLBAR ---------- */
 ::-webkit-scrollbar {
   width: 6px;

@@ -17,6 +17,9 @@
   <!-- tsParticles -->
   <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
 
+  <!-- HLS.js for .m3u8 video background -->
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+
   <link rel="stylesheet" href="./style.css?v=6" />
   <style>
     .members-hero {
@@ -47,6 +50,10 @@
 
 <body>
   <!-- ─── AMBIENT ─── -->
+  <div class="global-video-bg">
+    <video id="video-bg" muted loop playsinline></video>
+    <div class="global-video-overlay"></div>
+  </div>
   <div id="tsparticles"></div>
   <div id="mouse-glow"></div>
   <div id="topProgressBar"></div>
@@ -150,6 +157,7 @@
     </div>
   </div>
 
+  <script src="./background-video.js"></script>
   <script src="./members.js"></script>
 </body>
 
