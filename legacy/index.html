@@ -34,7 +34,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
     rel="stylesheet" />
 
   <!-- Font Awesome -->
@@ -90,23 +90,18 @@
       </a>
 
       <div class="nav-links" id="navLinks">
-        <a href="index.html#home" class="nav-link">Home</a>
         <a href="index.html#divisions" class="nav-link">Divisions</a>
         <a href="index.html#scrim" class="nav-link">Scrim</a>
-        <a href="index.html#members" class="nav-link">Members</a>
-        <a href="members.html" class="nav-link"><i class="fas fa-database"></i> Database</a>
-        <a href="index.html#benefits" class="nav-link">Benefits</a>
-        <a href="index.html#bangerz" class="nav-link">Partners</a>
-        <a href="index.html#streamers" class="nav-link">Streamers</a>
-        <a href="index.html#gallery" class="nav-link">Gallery</a>
-        <a href="topup.html" class="nav-link" style="color: var(--primary-glow);"><i class="fas fa-store"></i>
-          Top-Up</a>
-        <a href="index.html#join" class="nav-cta"><i class="fas fa-bolt"></i> Join Now</a>
+        <a href="index.html#members" class="nav-link">Roster</a>
+        <a href="members.html" class="nav-link">Database</a>
+        <a href="topup.html" class="nav-link">Store</a>
+        <a href="index.html#join" class="nav-cta">Join Discord</a>
       </div>
 
-      <div class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+      </html>
+      <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-expanded="false">
         <i class="fas fa-bars"></i>
-      </div>
+      </button>
     </div>
   </nav>
 
@@ -120,25 +115,16 @@
       </span>
       <h1 class="hero-title animate-on-scroll">MIDNIGHT<br />COMMUNITY</h1>
       <p class="hero-sub animate-on-scroll">
-        Komunitas gaming kompetitif inklusif — Bloodstrike, Valorant, PUBG,
-        dan Roblox. Bergabunglah. Berkembang. Dominasi dari kegelapan.
+        Komunitas esport inklusif untuk Bloodstrike, Valorant, PUBG Mobile,
+        dan Roblox. Temukan divisi, ikut scrim, dan tumbuh bersama Midnight.
       </p>
 
       <div class="hero-mission animate-on-scroll">
-        <p>
-          <strong>🌙 Visi:</strong> Menjadi komunitas e-sport inklusif yang
-          menjadi wadah bagi setiap individu untuk berkembang, berkompetisi,
-          dan bersosialisasi tanpa batas.
-        </p>
-        <p>
-          <strong>⚡ Misi:</strong> Membangun ruang aman, pengembangan potensi
-          tanpa sekat, solidaritas di atas kompetisi, aksesibilitas rekrutmen,
-          dan edukasi etika gaming.
-        </p>
+        <p><strong>🌙 Ruang untuk berkembang:</strong> komunitas yang menggabungkan kompetisi sehat, scrim rutin, dan pertemanan tanpa memandang level bermain.</p>
       </div>
 
       <!-- Countdown -->
-      <div class="countdown-container animate-on-scroll">
+      <div class="countdown-container animate-on-scroll" id="eventCountdown">
         <div class="countdown-item">
           <div class="countdown-number" id="days">00</div>
           <div class="countdown-label">Hari</div>
@@ -161,7 +147,7 @@
             margin-bottom: 36px;
             font-weight: 600;
           " id="countdown-label">
-        menuju Bloodstrike Rumble
+        Belum ada event mendatang
       </p>
 
       <div class="hero-buttons animate-on-scroll">
@@ -288,9 +274,9 @@
     <div class="container">
       <div class="section-header animate-on-scroll">
         <span class="section-badge">🎮 Divisions</span>
-        <h2 class="section-title">Our Elite Divisions</h2>
+        <h2 class="section-title">Divisi Midnight</h2>
         <p class="section-sub">
-          Competitive rosters ready for the midnight hour
+          Pilih game yang kamu mainkan dan temukan jalur bergabungnya.
         </p>
       </div>
       <div class="div-grid">
@@ -308,7 +294,7 @@
         </div>
         <div class="game-card animate-on-scroll" data-game="pubg" tabindex="0">
           <div class="game-icon"><i class="fas fa-parachute-box"></i></div>
-          <h3>PUBG</h3>
+          <h3>PUBG Mobile</h3>
           <span class="game-tag">Battle Royale</span>
           <p class="game-desc">Survive the night. Own the battleground.</p>
         </div>
@@ -328,8 +314,8 @@
       <div class="section-header animate-on-scroll">
         <span class="section-badge">⚔️ Scrim Agenda</span>
         <h2 class="section-title">Agenda Scrim</h2>
-        <p class="section-sub">
-          Pilih game, daftarkan tim kamu, dan buktikan dominasi.
+          <p class="section-sub">
+          Jadwal rutin komunitas. Cek Discord untuk konfirmasi slot dan perubahan waktu.
         </p>
       </div>
       <div class="scrim-grid">
@@ -661,8 +647,8 @@
     <div class="container">
       <div class="section-header animate-on-scroll">
         <span class="section-badge">📸 Gallery</span>
-        <h2 class="section-title">Midnight Moments</h2>
-        <p class="section-sub">Geser · klik · drag — momen terbaik kami</p>
+        <h2 class="section-title">Community Highlights</h2>
+        <p class="section-sub">Ringkasan aktivitas, pencapaian, dan momen komunitas.</p>
       </div>
 
       <!-- Arrow controls -->
@@ -670,7 +656,7 @@
         <button class="gallery-arrow" id="slideLeft" aria-label="Geser kiri">
           <i class="fas fa-chevron-left"></i>
         </button>
-        <span style="color: var(--text-muted); font-size: 0.85rem">Drag atau gunakan tombol</span>
+        <span style="color: var(--text-muted); font-size: 0.85rem">Geser untuk melihat highlight</span>
         <button class="gallery-arrow" id="slideRight" aria-label="Geser kanan">
           <i class="fas fa-chevron-right"></i>
         </button>
@@ -867,7 +853,7 @@
       </div>
       <div class="widget-container animate-on-scroll">
         <div class="discord-status-badge">
-          <span class="status-dot"></span> Server Online · 250+ members
+          <span class="status-dot"></span> Status server ditampilkan dari Discord
         </div>
         <div class="widget-skeleton" id="widgetSkeleton">
           <i class="fab fa-discord"></i><span>Loading Discord...</span>

@@ -4,9 +4,7 @@
 // MIDNIGHT COMMUNITY — script.js (v3 – Full Feature Build)
 // ============================================================
 
-const DISCORD_WEBHOOK     = 'https://discord.com/api/webhooks/1493829314540470414/-TafK8S2of06A3owJnUFwt9OcU6jwbznGH5sVYSC6CxDmwx6-CAOsMRoQ1qmokO4zFkp';
-const RSVP_WEBHOOK        = 'https://discord.gg/sH4WESmjMK';
-const RSVP_WEBHOOK_ACTUAL = 'https://discord.com/api/webhooks/1493852317160837241/i1JecxioTJNmkIoH6F2Zv9oyfflMo7oDh8Z4sfquT4Ec2wMguaGroXu1gc6C3eyJFTGz';
+const API_ENDPOINT = '/api/submit';
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -119,34 +117,6 @@ document.addEventListener('DOMContentLoaded', () => {
   themeBtn?.addEventListener('click', () => applyTheme(!document.body.classList.contains('light-mode')));
   applyTheme(localStorage.getItem('theme') === 'light');
 
-  // ── Typing hero subtitle ───────────────────────────────────
-  const heroSub = document.querySelector('.hero-sub');
-  if (heroSub) {
-    const phrases = [
-      'Bergabunglah. Berkembang. Dominasi dari kegelapan.',
-      'Rise from the shadows. Compete. Conquer.',
-      'Komunitas gaming paling gelap & kompetitif.',
-      'Scrim. Tournament. Community. Family.'
-    ];
-    let pi = 0, ci = 0, deleting = false;
-    const base = 'Komunitas gaming kompetitif inklusif — Bloodstrike, Valorant, PUBG, dan Roblox.\n';
-
-    function typeLoop() {
-      const phrase = phrases[pi];
-      if (!deleting) {
-        heroSub.innerHTML = base + phrase.substring(0, ci + 1);
-        ci++;
-        if (ci === phrase.length) { deleting = true; setTimeout(typeLoop, 2200); return; }
-      } else {
-        heroSub.innerHTML = base + phrase.substring(0, ci - 1);
-        ci--;
-        if (ci === 0) { deleting = false; pi = (pi + 1) % phrases.length; }
-      }
-      setTimeout(typeLoop, deleting ? 38 : 62);
-    }
-    setTimeout(typeLoop, 1800);
-  }
-
   // ── Main countdown ─────────────────────────────────────────
   (function countdown() {
     const target = new Date('2026-04-25T20:00:00+07:00').getTime();
@@ -155,11 +125,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const tick = () => {
       const diff = target - Date.now();
       const lbl  = document.getElementById('countdown-label');
+      const countdown = document.getElementById('eventCountdown');
       if (diff <= 0) {
-        ['days','hours','minutes','seconds'].forEach(id => set(id, 0));
-        if (lbl) lbl.textContent = '🔥 Event sudah dimulai!';
+        if (countdown) countdown.hidden = true;
+        if (lbl) lbl.textContent = 'Belum ada event mendatang. Ikuti Discord untuk pengumuman terbaru.';
         return;
       }
+      if (countdown) countdown.hidden = false;
       set('days',    diff / 86400000);
       set('hours',   (diff % 86400000) / 3600000);
       set('minutes', (diff % 3600000)  / 60000);
@@ -615,10 +587,10 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     try {
-      const res = await fetch(DISCORD_WEBHOOK, {
+      const res = await fetch(API_ENDPOINT, {
         method:  'POST',
         headers: { 'Content-Type': 'application/json' },
-        body:    JSON.stringify(payload)
+        body:    JSON.stringify({ type: 'registration', payload })
       });
       if (res.ok || res.status === 204) {
         showToast('✅ Pendaftaran berhasil dikirim! Cek Discord dalam 24 jam.');
@@ -772,7 +744,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // ──────────────────────────────────────────────────────────
   // ── SCRIM REGISTRATION UI LOGIC (Unified) ─────────────────
   // ──────────────────────────────────────────────────────────
-  const SCRIM_WEBHOOK = "https://discord.com/api/webhooks/1493863897999085588/hIjCbaL9ZPPEcj_z-2k0-lSX9uH3zesi5zcwZDITku5BhzsDZmw3Biv9Y5KjzhyHm2Vv";
   let currentEvent   = '';
   let currentJadwal  = '';
 
@@ -839,10 +810,10 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     try {
-      const res = await fetch(SCRIM_WEBHOOK, {
+      const res = await fetch(API_ENDPOINT, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
+        body: JSON.stringify({ type: 'scrim', payload })
       });
       if (res.ok || res.status === 204) {
         showToast('✅ Tim berhasil didaftarkan!', 'success');

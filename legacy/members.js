@@ -96,14 +96,14 @@ async function fetchMembers() {
         </div>
     `).join('');
 
-    console.log('🚀 Memulai fetch data via Apps Script API...');
+    console.log('Memulai fetch data via Apps Script API...');
 
     try {
         const response = await fetch(SHEETS_JSON_URL);
         if (!response.ok) throw new Error('Status: ' + response.status);
         
         const members = await response.json();
-        console.log('✅ Data JSON Diterima. Jumlah member:', members.length);
+        console.log('Data JSON diterima. Jumlah member:', members.length);
         
         if (loading) loading.style.display = 'none';
         grid.innerHTML = '';
@@ -146,7 +146,7 @@ function renderDummyData() {
     const grid = document.getElementById('membersGrid');
     const dummy = [
         { nama: "MID◆YK (Trial)", role: "Founder", game: "Bloodstrike PC", bio: "Gagal menyambung ke API Google Apps Script." },
-        { nama: "Sistem Error", role: "CORS Issue", game: "Local File", bio: "Gunakan Live Server untuk akses API sungguhan." }
+        { nama: "Database offline", role: "Coba lagi nanti", game: "Midnight Community", bio: "Database sedang tidak dapat diakses. Coba refresh halaman beberapa saat lagi." }
     ];
 
     grid.innerHTML = '';

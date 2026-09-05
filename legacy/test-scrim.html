@@ -129,7 +129,7 @@
   </div>
 
   <script>
-    var SCRIM_WEBHOOK = 'https://discord.com/api/webhooks/1493863897999085588/hIjCbaL9ZPPEcj_z-2k0-lSX9uH3zesi5zcwZDITku5BhzsDZmw3Biv9Y5KjzhyHm2Vv';
+    var API_ENDPOINT = '/api/submit';
     var scrimEvent = '';
     var scrimJadwal = '';
 
@@ -201,10 +201,10 @@
       };
 
       try {
-        var res = await fetch(SCRIM_WEBHOOK, {
+        var res = await fetch(API_ENDPOINT, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
+          body: JSON.stringify({ type: 'scrim', payload: payload })
         });
         if (res.ok || res.status === 204) {
           alert('\u2705 Tim "' + namaTim + '" berhasil didaftarkan!');
