@@ -16,12 +16,21 @@ if (fs.existsSync(envPath)) {
 
 const app = express();
 const port = Number(process.env.PORT || 8787);
-const databaseUrl = process.env.MIDNIGHT_DATABASE_URL || 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTd4COjrmybwAop2jet8COF4u6nZ80TZvRWsiijfm-Qd4z-O4UmM1C6-HJpS_BvTG8RWUvYwyNoAEPf/pub?output=csv';
+const databaseUrl = process.env.MIDNIGHT_DATABASE_URL || 'https://docs.google.com/spreadsheets/d/1iCtvJ_ABa3LZjQDefk2dMHBVBIIO9CNI2rQSc30OIvc/export?format=csv&gid=1851270134';
+const leaderboardDatabaseUrl = process.env.MIDNIGHT_LEADERBOARD_URL || 'https://docs.google.com/spreadsheets/d/1iCtvJ_ABa3LZjQDefk2dMHBVBIIO9CNI2rQSc30OIvc/export?format=csv&gid=2046397247';
+const achievementsDatabaseUrl = process.env.MIDNIGHT_ACHIEVEMENTS_URL || 'https://docs.google.com/spreadsheets/d/1iCtvJ_ABa3LZjQDefk2dMHBVBIIO9CNI2rQSc30OIvc/export?format=csv&gid=990758237';
+const newsDatabaseUrl = process.env.MIDNIGHT_NEWS_URL || 'https://docs.google.com/spreadsheets/d/1iCtvJ_ABa3LZjQDefk2dMHBVBIIO9CNI2rQSc30OIvc/export?format=csv&gid=1032271976';
 const distPath = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../dist');
 
 app.use(express.json({ limit: '24kb' }));
 
-app.get('/api/health', (_req, res) => res.json({ ok: true, service: 'midnight-api' }));
+app.get('/api/admin/sheet-link', (_req, res) => {
+  res.json({
+    membersSheet: 'https://docs.google.com/spreadsheets/d/1iCtvJ_ABa3LZjQDefk2dMHBVBIIO9CNI2rQSc30OIvc/edit#gid=1851270134',
+    leaderboardSheet: 'https://docs.google.com/spreadsheets/d/1iCtvJ_ABa3LZjQDefk2dMHBVBIIO9CNI2rQSc30OIvc/edit#gid=2046397247',
+    achievementsSheet: 'https://docs.google.com/spreadsheets/d/1iCtvJ_ABa3LZjQDefk2dMHBVBIIO9CNI2rQSc30OIvc/edit#gid=990758237'
+  });
+});
 
 function parseCsv(text) {
   const rows = [];
@@ -68,6 +77,71 @@ app.get('/api/members', async (_req, res) => {
     res.json(members);
   } catch {
     res.status(502).json({ error: 'Unable to reach member database' });
+  }
+});
+
+app.get('/api/leaderboard', async (_req, res) => {
+  try {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 4000);
+    const response = await fetch(leaderboardDatabaseUrl, { signal: controller.signal });
+    clearTimeout(timer);
+    if (!response.ok) throw new Error('Leaderboard response not ok');
+    const rows = parseCsv(await response.text());
+    const leaderboard = rows.slice(1).map(columns => ({
+      rank: Number(columns[0]) || 1,
+      name: columns[1] || '',
+      role: columns[2] || 'Member',
+      game: columns[3] || 'Midnight',
+      score: columns[4] ? `${columns[4]} pts` : '0 pts'
+    })).filter(item => item.name);
+    res.json(leaderboard);
+  } catch {
+    res.status(502).json({ error: 'Unable to reach leaderboard database' });
+  }
+});
+
+app.get('/api/achievements', async (_req, res) => {
+  try {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 4000);
+    const response = await fetch(achievementsDatabaseUrl, { signal: controller.signal });
+    clearTimeout(timer);
+    if (!response.ok) throw new Error('Achievements response not ok');
+    const rows = parseCsv(await response.text());
+    const medalMap = { '1': '🥇 1st Place', '2': '🥈 2nd Place', '3': '🥉 3rd Place' };
+    const items = rows.slice(1).map(columns => {
+      const p = (columns[0] || '').trim();
+      return {
+        place: medalMap[p] || (p ? `🏆 Place #${p}` : '🏆 Winner'),
+        title: columns[1] || '',
+        team: columns[2] || 'Midnight',
+        date: columns[3] || '2026'
+      };
+    }).filter(item => item.title);
+    res.json(items);
+  } catch {
+    res.status(502).json({ error: 'Unable to reach achievements database' });
+  }
+});
+
+app.get('/api/news', async (_req, res) => {
+  try {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 4000);
+    const response = await fetch(newsDatabaseUrl, { signal: controller.signal });
+    clearTimeout(timer);
+    if (!response.ok) throw new Error('News response not ok');
+    const rows = parseCsv(await response.text());
+    const news = rows.slice(1).map(columns => ({
+      tag: (columns[0] || 'COMMUNITY').toUpperCase(),
+      title: columns[1] || '',
+      snippet: columns[2] || '',
+      date: columns[3] || '2026'
+    })).filter(item => item.title);
+    res.json(news);
+  } catch {
+    res.status(502).json({ error: 'Unable to reach news database' });
   }
 });
 

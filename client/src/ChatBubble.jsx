@@ -1,15 +1,30 @@
 import { useState, useRef, useEffect } from 'react';
 
+function formatMd(text) {
+  return text
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*(.+?)\*/g, '<em>$1</em>')
+    .replace(/`(.+?)`/g, '<code>$1</code>')
+    .replace(/^[-•]\s+(.+)/gm, '<li>$1</li>')
+    .replace(/(<li>.*<\/li>)/gs, '<ul>$1</ul>')
+    .replace(/\n/g, '<br/>');
+}
+
 const API_URL = '/ai/v1/chat/completions';
 const API_KEY = import.meta.env.VITE_AI_API_KEY;
 const AI_MODEL = import.meta.env.VITE_AI_MODEL || 'my9';
 
-const SYSTEM_PROMPT = `Kamu adalah asisten AI Midnight Community — komunitas esport Indonesia untuk Bloodstrike, Valorant, PUBG Mobile, dan Roblox. Jawab dengan ramah, singkat, dan membantu. Gunakan bahasa Indonesia kecuali user berbicara bahasa Inggris.`;
+const SYSTEM_PROMPT = `You are Midnight AI, the official assistant for Midnight Community.
+Core Guidelines:
+1. Answer ONLY questions related to Midnight Community (game divisions: Bloodstrike, Valorant, PUBG Mobile, Roblox; scrim schedule; Roster/Members; Rules; FAQ; and Registration/Discord guidance).
+2. For off-topic questions, decline politely, professionally, and concisely: "Sorry, I can only help with questions regarding Midnight Community."
+3. Provide professional, informative, and neatly structured responses (use bullet points/lists when applicable).
+4. Use English for all communications.`;
 
 export default function ChatBubble() {
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState([
-    { role: 'assistant', content: 'Halo! Ada yang bisa dibantu tentang Midnight Community? 🎮' }
+    { role: 'assistant', content: 'Hello! How can I help you regarding Midnight Community today? 🎮' }
   ]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
@@ -38,10 +53,10 @@ export default function ChatBubble() {
         }),
       });
       const data = await res.json();
-      const reply = data.choices?.[0]?.message?.content || 'Maaf, tidak bisa menjawab saat ini.';
+      const reply = data.choices?.[0]?.message?.content || 'Sorry, unable to answer at the moment.';
       setMessages(m => [...m, { role: 'assistant', content: reply }]);
     } catch {
-      setMessages(m => [...m, { role: 'assistant', content: 'Koneksi ke AI gagal. Coba lagi nanti.' }]);
+      setMessages(m => [...m, { role: 'assistant', content: 'Connection to AI failed. Please try again later.' }]);
     } finally {
       setLoading(false);
     }
@@ -56,22 +71,21 @@ export default function ChatBubble() {
               <strong>Midnight AI</strong>
               <span>Community Assistant</span>
             </div>
-            <button onClick={() => setOpen(false)} aria-label="Tutup chat">×</button>
+            <button onClick={() => setOpen(false)} aria-label="Close chat">×</button>
           </div>
           <div className="chat-messages">
             {messages.map((msg, i) => (
-              <div key={i} className={`chat-msg chat-msg-${msg.role}`}>
-                {msg.content}
-              </div>
+              <div key={i} className={`chat-msg chat-msg-${msg.role}`}
+                dangerouslySetInnerHTML={{ __html: formatMd(msg.content) }} />
             ))}
-            {loading && <div className="chat-msg chat-msg-assistant chat-typing">Mengetik...</div>}
+            {loading && <div className="chat-msg chat-msg-assistant chat-typing">Typing...</div>}
             <div ref={bottomRef} />
           </div>
           <form className="chat-input" onSubmit={e => { e.preventDefault(); send(); }}>
             <input
               value={input}
               onChange={e => setInput(e.target.value)}
-              placeholder="Ketik pesan..."
+              placeholder="Type a message..."
               disabled={loading}
             />
             <button type="submit" disabled={loading || !input.trim()}>↑</button>
